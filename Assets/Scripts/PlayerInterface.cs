@@ -20,7 +20,8 @@ namespace ECM.Controllers
             BaseInputManager.PlayerMovement.Disable();
             BaseInputManager.Interface.Disable();
             BaseInputManager.CommandMode.Enable();
-            Debug.Log("SwitchedToCommandMode");
+            // Debug.Log("SwitchedToCommandMode");
+            GameEvents.current.CommandModeActivated();
         }
 
         public void SwitchFromCommandMode()
@@ -28,7 +29,8 @@ namespace ECM.Controllers
             BaseInputManager.PlayerMovement.Enable();
             BaseInputManager.Interface.Enable();
             BaseInputManager.CommandMode.Disable();
-            Debug.Log("SwitchedFromCommandMode");
+            // Debug.Log("SwitchedFromCommandMode");
+            GameEvents.current.CommandModeExited();
         }
 
         void Awake()

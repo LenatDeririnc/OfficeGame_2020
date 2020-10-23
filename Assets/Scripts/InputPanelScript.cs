@@ -1,18 +1,26 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class InputPanelScript : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public GameObject inputField;
+
+    private void Start()
     {
-        
+        GameEvents.current.onCommandModeActivated += OnCommandModeActivated;
+        GameEvents.current.onCommandModeExited += OnCommandModeExited;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnCommandModeActivated()
     {
-        
+        inputField.SetActive(true);
+    }
+    
+    private void OnCommandModeExited()
+    {
+        inputField.SetActive(false);
     }
 }
