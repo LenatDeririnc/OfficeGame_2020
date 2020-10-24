@@ -12,7 +12,7 @@ using UnityEngine.UI;
 public class InputPanelScript : MonoBehaviour
 {
     #region INIT
-
+    
     public bool CommandModeActivated = false;
     public GameObject fieldObject;
     public TMP_Text logField;
@@ -76,10 +76,17 @@ public class InputPanelScript : MonoBehaviour
     public void acceptTyping()
     {
         typingLog = typingLine;
-        typingLine = "";
         logField.text = typingLog;
+        GameManager.current.commands.CheckCommand(typingLine.Split(' '));
+        typingLine = "";
         clearTypeLine();
         inputField.ActivateInputField();
+    }
+
+    public void WriteToConsole(string value)
+    {
+        typingLog = value;
+        logField.text = typingLog;
     }
 
     #endregion

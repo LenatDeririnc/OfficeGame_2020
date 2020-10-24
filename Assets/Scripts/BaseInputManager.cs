@@ -24,15 +24,5 @@ public static class BaseInputManager
         Interface.Enable();
     }
 
-    /*protected void OnEnable()
-    {
-        customCharacterInput.Enable();
-    }
-
-    protected void OnDisable()
-    {
-        customCharacterInput.Disable();
-    }*/
-
 }
 
