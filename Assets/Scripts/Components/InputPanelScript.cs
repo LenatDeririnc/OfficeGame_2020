@@ -17,7 +17,6 @@ public class InputPanelScript : MonoBehaviour
     public GameObject fieldObject;
     public TMP_Text logField;
     public TMP_InputField inputField;
-    public event Action onConsoleUpdate;
 
     private void INIT()
     {
