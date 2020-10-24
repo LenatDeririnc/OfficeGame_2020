@@ -301,14 +301,6 @@ public class @CustomCharacterInput : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
-                },
-                {
-                    ""name"": ""AcceptCommand"",
-                    ""type"": ""Button"",
-                    ""id"": ""a41d00e0-2977-4735-80f0-7572c921bc26"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -320,28 +312,6 @@ public class @CustomCharacterInput : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
                     ""action"": ""ExitFromCommandMode"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""95f7a5c8-40fb-4eb5-bea8-e44316213cc1"",
-                    ""path"": ""<Keyboard>/enter"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard"",
-                    ""action"": ""AcceptCommand"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""4c4a568e-c8eb-42ff-955c-dbffc3ec6ad6"",
-                    ""path"": ""<Keyboard>/numpadEnter"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard"",
-                    ""action"": ""AcceptCommand"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -509,7 +479,6 @@ public class @CustomCharacterInput : IInputActionCollection, IDisposable
         // CommandMode
         m_CommandMode = asset.FindActionMap("CommandMode", throwIfNotFound: true);
         m_CommandMode_ExitFromCommandMode = m_CommandMode.FindAction("ExitFromCommandMode", throwIfNotFound: true);
-        m_CommandMode_AcceptCommand = m_CommandMode.FindAction("AcceptCommand", throwIfNotFound: true);
         // Interface
         m_Interface = asset.FindActionMap("Interface", throwIfNotFound: true);
         m_Interface_Pause = m_Interface.FindAction("Pause", throwIfNotFound: true);
@@ -641,13 +610,11 @@ public class @CustomCharacterInput : IInputActionCollection, IDisposable
     private readonly InputActionMap m_CommandMode;
     private ICommandModeActions m_CommandModeActionsCallbackInterface;
     private readonly InputAction m_CommandMode_ExitFromCommandMode;
-    private readonly InputAction m_CommandMode_AcceptCommand;
     public struct CommandModeActions
     {
         private @CustomCharacterInput m_Wrapper;
         public CommandModeActions(@CustomCharacterInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @ExitFromCommandMode => m_Wrapper.m_CommandMode_ExitFromCommandMode;
-        public InputAction @AcceptCommand => m_Wrapper.m_CommandMode_AcceptCommand;
         public InputActionMap Get() { return m_Wrapper.m_CommandMode; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -660,9 +627,6 @@ public class @CustomCharacterInput : IInputActionCollection, IDisposable
                 @ExitFromCommandMode.started -= m_Wrapper.m_CommandModeActionsCallbackInterface.OnExitFromCommandMode;
                 @ExitFromCommandMode.performed -= m_Wrapper.m_CommandModeActionsCallbackInterface.OnExitFromCommandMode;
                 @ExitFromCommandMode.canceled -= m_Wrapper.m_CommandModeActionsCallbackInterface.OnExitFromCommandMode;
-                @AcceptCommand.started -= m_Wrapper.m_CommandModeActionsCallbackInterface.OnAcceptCommand;
-                @AcceptCommand.performed -= m_Wrapper.m_CommandModeActionsCallbackInterface.OnAcceptCommand;
-                @AcceptCommand.canceled -= m_Wrapper.m_CommandModeActionsCallbackInterface.OnAcceptCommand;
             }
             m_Wrapper.m_CommandModeActionsCallbackInterface = instance;
             if (instance != null)
@@ -670,9 +634,6 @@ public class @CustomCharacterInput : IInputActionCollection, IDisposable
                 @ExitFromCommandMode.started += instance.OnExitFromCommandMode;
                 @ExitFromCommandMode.performed += instance.OnExitFromCommandMode;
                 @ExitFromCommandMode.canceled += instance.OnExitFromCommandMode;
-                @AcceptCommand.started += instance.OnAcceptCommand;
-                @AcceptCommand.performed += instance.OnAcceptCommand;
-                @AcceptCommand.canceled += instance.OnAcceptCommand;
             }
         }
     }
@@ -780,7 +741,6 @@ public class @CustomCharacterInput : IInputActionCollection, IDisposable
     public interface ICommandModeActions
     {
         void OnExitFromCommandMode(InputAction.CallbackContext context);
-        void OnAcceptCommand(InputAction.CallbackContext context);
     }
     public interface IInterfaceActions
     {
