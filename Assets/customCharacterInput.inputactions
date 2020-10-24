@@ -288,14 +288,6 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
-                },
-                {
-                    "name": "AcceptCommand",
-                    "type": "Button",
-                    "id": "a41d00e0-2977-4735-80f0-7572c921bc26",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -307,28 +299,6 @@
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "ExitFromCommandMode",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "95f7a5c8-40fb-4eb5-bea8-e44316213cc1",
-                    "path": "<Keyboard>/enter",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "AcceptCommand",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "4c4a568e-c8eb-42ff-955c-dbffc3ec6ad6",
-                    "path": "<Keyboard>/numpadEnter",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "AcceptCommand",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

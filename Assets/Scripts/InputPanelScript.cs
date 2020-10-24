@@ -1,26 +1,87 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
+using System.Runtime.Remoting.Messaging;
 using UnityEngine;
 using UnityEngine.Events;
+using TMPro;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class InputPanelScript : MonoBehaviour
 {
-    public GameObject inputField;
+    #region INIT
 
-    private void Start()
+    public bool CommandModeActivated = false;
+    public GameObject fieldObject;
+    public TMP_Text logField;
+    public TMP_InputField inputField;
+    public event Action onConsoleUpdate;
+
+    private void INIT()
     {
-        GameEvents.current.onCommandModeActivated += OnCommandModeActivated;
-        GameEvents.current.onCommandModeExited += OnCommandModeExited;
+        GameEvents.current.onCommandModeActivated += SwitchToCommandMode;
+        GameEvents.current.onCommandModeExited += SwitchFromCommandMode;
+        fieldObject.SetActive(CommandModeActivated);
     }
 
-    private void OnCommandModeActivated()
+    private void Awake()
     {
-        inputField.SetActive(true);
+        INIT();
+        _typingLog = logField.text;
+    }
+
+    #endregion
+
+    #region FIELDS
+
+    public string typingLine;
+
+    private string _typingLog;
+    
+    private string typingLog
+    {
+        get => _typingLog;
+        set => _typingLog = _typingLog + "\n" + value + " ";
+    }
+
+    #endregion
+
+    #region LOGIC
+
+    public void SwitchToCommandMode()
+    {
+        fieldObject.SetActive(true);
+        inputField.ActivateInputField();
+    }
+
+    public void SwitchFromCommandMode()
+    {
+        fieldObject.SetActive(false);
+        clearTypeLine();        
+    }
+
+    public void clearTypeLine()
+    {
+        inputField.text = "";
+        typingLine = "";
+    }
+
+    public void type(string value)
+    {
+        typingLine = value;
     }
     
-    private void OnCommandModeExited()
+    public void acceptTyping()
     {
-        inputField.SetActive(false);
+        typingLog = typingLine;
+        typingLine = "";
+        logField.text = typingLog;
+        clearTypeLine();
+        inputField.ActivateInputField();
     }
+
+    #endregion
+    
 }
