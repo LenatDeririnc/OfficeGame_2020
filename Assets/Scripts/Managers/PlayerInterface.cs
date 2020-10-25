@@ -18,10 +18,12 @@ public class PlayerInterface : MonoBehaviour
         get => m_item;
         set
         {
-            if (m_item == value) return;
-            m_item = value;
-            if (OnItemChanged != null)
-                OnItemChanged();
+            if (m_item != value || (value is null & !(m_item is null)))
+            {
+                m_item = value;
+                if (OnItemChanged != null)
+                    OnItemChanged();
+            }
         }
     }
 
@@ -85,19 +87,19 @@ public class PlayerInterface : MonoBehaviour
     {
         if (Item is null) return;
         Item.Interact();
-        interactPanel.SetActive(false);
     }
     
     RaycastHit raycastHit;
 
     private void updateRaycast()
     {
-        Item newItem = null;
         bool hasContact = Physics.Raycast(
             m_camera.position, 
             m_camera.forward, 
             out raycastHit, 
             5f);
+        
+        Item newItem = null;
         bool gotItem = hasContact ? raycastHit.collider.TryGetComponent(out newItem) : false;
         Item = newItem;
     }
