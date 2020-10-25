@@ -600,10 +600,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 247278400}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 279aabedf14af194b96b8fcc84264546, type: 3}
+  m_Script: {fileID: 11500000, guid: 561a83e067f549b48e9659d062ea1855, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: apple
+  m_id: "\u042F\u0431\u043B\u043E\u043A\u043E"
+  m_health: 100
+  m_changeHealthSpeed: 5
+--- !u!135 &247278405
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 247278400}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.06688371
+  m_Center: {x: -0.00009536743, y: 0.06330159, z: 0.00051186234}
 --- !u!1001 &341475532
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1160,7 +1175,7 @@ GameObject:
   - component: {fileID: 684712309}
   - component: {fileID: 684712308}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: InteractText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1735,10 +1750,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1138426445}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 279aabedf14af194b96b8fcc84264546, type: 3}
+  m_Script: {fileID: 11500000, guid: ac34e7f5e85e4ceaa1ff29941af34023, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: sword
+  m_id: sword
+  message: "\u0417\u0430\u043F\u0438\u0441\u043A\u0430 1"
 --- !u!1 &1139912188 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 907737577407192764, guid: 3c94a574020d3de429d0c295b3a83db4,
@@ -2781,6 +2797,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5902016491919885062, guid: 5704d2fab32e30f45b1ddcbd62d444b5,
+        type: 3}
+      propertyPath: interactPanel
+      value: 
+      objectReference: {fileID: 684712306}
     - target: {fileID: 5902016491919885063, guid: 5704d2fab32e30f45b1ddcbd62d444b5,
         type: 3}
       propertyPath: m_LocalPosition.x
