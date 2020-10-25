@@ -296,7 +296,7 @@ MonoBehaviour:
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 175932416}
+      - m_Target: {fileID: 0}
         m_MethodName: acceptTyping
         m_Mode: 1
         m_Arguments:
@@ -325,7 +325,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 175932416}
+      - m_Target: {fileID: 0}
         m_MethodName: type
         m_Mode: 0
         m_Arguments:
@@ -508,14 +508,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 175932411}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d55fcb552f8f7e14faa121321efa42b4, type: 3}
+  m_Script: {fileID: 11500000, guid: bcc685d724a00cb488e551cc3cd56d36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CommandModeActivated: 0
-  fieldObject: {fileID: 1549303039}
-  logField: {fileID: 790828775}
-  inputField: {fileID: 98315297}
-  typingLine: 
+  inputPanel: {fileID: 1549303043}
+  interactPanel: {fileID: 684712310}
 --- !u!1001 &181266952
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1767,7 +1764,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_id: sword
-  message: "\u0417\u0430\u043F\u0438\u0441\u043A\u0430 1"
 --- !u!1 &1139912188 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 907737577407192764, guid: 3c94a574020d3de429d0c295b3a83db4,
@@ -2090,7 +2086,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9ced16c3027584c8b44998abdcdfff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InputPanelScript: {fileID: 175932416}
+  InputPanelScript: {fileID: 0}
 --- !u!114 &1487284855
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2169,6 +2165,7 @@ GameObject:
   - component: {fileID: 1549303040}
   - component: {fileID: 1549303042}
   - component: {fileID: 1549303041}
+  - component: {fileID: 1549303043}
   m_Layer: 5
   m_Name: InputPanel
   m_TagString: Untagged
@@ -2233,6 +2230,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1549303039}
   m_CullTransparentMesh: 0
+--- !u!114 &1549303043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1549303039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d55fcb552f8f7e14faa121321efa42b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CommandModeActivated: 0
+  logField: {fileID: 790828775}
+  inputField: {fileID: 98315297}
 --- !u!1 &1623683639
 GameObject:
   m_ObjectHideFlags: 0
@@ -2718,8 +2730,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c11614b1686169c49aa75d2876f0857c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  commands: {fileID: 0}
-  interactPanelScript: {fileID: 684712310}
 --- !u!4 &2047827279
 Transform:
   m_ObjectHideFlags: 0
@@ -2746,7 +2756,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0d62d0a1a68476993ba98316bcbe656, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputPanel: {fileID: 175932416}
+  inputPanel: {fileID: 1549303043}
 --- !u!1001 &2083924086
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2872,7 +2882,12 @@ PrefabInstance:
         type: 3}
       propertyPath: interactPanel
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 684712310}
+    - target: {fileID: 5902016491919885062, guid: 5704d2fab32e30f45b1ddcbd62d444b5,
+        type: 3}
+      propertyPath: inputPanelScript
+      value: 
+      objectReference: {fileID: 1549303043}
     - target: {fileID: 5902016491919885063, guid: 5704d2fab32e30f45b1ddcbd62d444b5,
         type: 3}
       propertyPath: m_LocalPosition.x
