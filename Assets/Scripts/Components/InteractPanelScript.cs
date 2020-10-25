@@ -21,8 +21,7 @@ public class InteractPanelScript : MonoBehaviour
         }
     }
     
-    private delegate void OnCaptureChangedDelegate();
-    private event OnCaptureChangedDelegate OnCaptureChanged;
+    private event Action OnCaptureChanged;
 
     private void ChangeCaptureName()
     {

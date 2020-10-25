@@ -14,15 +14,12 @@ public class InputPanelScript : MonoBehaviour
     #region INIT
     
     public bool CommandModeActivated = false;
-    public GameObject fieldObject;
     public TMP_Text logField;
     public TMP_InputField inputField;
 
     private void INIT()
     {
-        GameEvents.current.onCommandModeActivated += SwitchToCommandMode;
-        GameEvents.current.onCommandModeExited += SwitchFromCommandMode;
-        fieldObject.SetActive(CommandModeActivated);
+        gameObject.SetActive(CommandModeActivated);
     }
 
     private void Awake()
@@ -31,11 +28,16 @@ public class InputPanelScript : MonoBehaviour
         _typingLog = logField.text;
     }
 
+    public void SetActive(bool state)
+    {
+        gameObject.SetActive(state);
+    }
+
     #endregion
 
     #region FIELDS
 
-    public string typingLine;
+    private string typingLine;
 
     private string _typingLog;
     
@@ -51,13 +53,13 @@ public class InputPanelScript : MonoBehaviour
 
     public void SwitchToCommandMode()
     {
-        fieldObject.SetActive(true);
+        gameObject.SetActive(true);
         inputField.ActivateInputField();
     }
 
     public void SwitchFromCommandMode()
     {
-        fieldObject.SetActive(false);
+        gameObject.SetActive(false);
         clearTypeLine();        
     }
 
@@ -76,7 +78,7 @@ public class InputPanelScript : MonoBehaviour
     {
         typingLog = typingLine;
         logField.text = typingLog;
-        GameManager.current.commands.CheckCommand(typingLine.Split(' '));
+        Commands.current.CheckCommand(typingLine.Split(' '));
         typingLine = "";
         clearTypeLine();
         inputField.ActivateInputField();

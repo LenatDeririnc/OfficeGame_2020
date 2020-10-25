@@ -5,11 +5,13 @@ using UnityEngine;
 
 public class Commands : MonoBehaviour
 {
+    public static Commands current;
     private Dictionary<string, Action<string[]>> CommandLibary;
     public InputPanelScript inputPanel;
 
     public void Awake()
     {
+        current = this;
         CommandLibary = new Dictionary<string, Action<string[]>>();
         CommandLibary.Add("test", Helloworld);
         CommandLibary.Add("interact", interact);

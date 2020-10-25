@@ -14,22 +14,4 @@ public class GameEvents : MonoBehaviour
         current = this;
     }
 
-    public event Action onCommandModeActivated;
-    public void CommandModeActivated()
-    {
-        if (onCommandModeActivated != null)
-        {
-            onCommandModeActivated();
-        }
-    }
-    
-    public event Action onCommandModeExited;
-    public void CommandModeExited()
-    {
-        if (onCommandModeExited != null)
-        {
-            onCommandModeExited();
-        }
-    }
-
 }

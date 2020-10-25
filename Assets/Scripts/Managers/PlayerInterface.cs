@@ -11,6 +11,7 @@ public class PlayerInterface : MonoBehaviour
     private Transform m_transform;
     private Transform m_camera;
     private Item m_item;
+    [SerializeField] private InputPanelScript inputPanelScript;
     [SerializeField] private InteractPanelScript interactPanel;
 
     public Item Item
@@ -35,7 +36,8 @@ public class PlayerInterface : MonoBehaviour
     {
         m_transform = transform;
         m_camera = transform.GetComponentInChildren<Camera>().transform;
-        interactPanel = GameManager.current.interactPanelScript;
+        interactPanel = CanvasScript.current.interactPanel;
+        inputPanelScript = CanvasScript.current.inputPanel;
     }
 
     private void INPUTS()
@@ -62,7 +64,7 @@ public class PlayerInterface : MonoBehaviour
         BaseInputManager.PlayerMovement.Disable();
         BaseInputManager.Interface.Disable();
         BaseInputManager.CommandMode.Enable();
-        GameEvents.current.CommandModeActivated();
+        inputPanelScript.SwitchToCommandMode();
     }
 
     void SwitchFromCommandMode()
@@ -70,7 +72,7 @@ public class PlayerInterface : MonoBehaviour
         BaseInputManager.PlayerMovement.Enable();
         BaseInputManager.Interface.Enable();
         BaseInputManager.CommandMode.Disable();
-        GameEvents.current.CommandModeExited();
+        inputPanelScript.SwitchFromCommandMode();
     }
     
     private void ShowInteract()

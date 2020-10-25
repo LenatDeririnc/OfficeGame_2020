@@ -8,8 +8,7 @@ public class TakableItem : Item
     public override string ID() => m_id;
 
     public override string interactName() => "Взять";
-
-    [SerializeField] private string message = "";
+    
     public override void Interact()
     {
         Destroy(gameObject);
