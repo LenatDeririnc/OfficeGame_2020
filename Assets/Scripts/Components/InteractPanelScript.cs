@@ -32,6 +32,18 @@ public class InteractPanelScript : MonoBehaviour
     {
         gameObject.SetActive(state);
     }
+    
+    public void ShowInteract(Item item)
+    {
+        if (item is null)
+        {
+            SetActive(false);
+            return;
+        }
+
+        CaptureName = item.interactName();
+        SetActive(true);
+    }
 
     private void Awake()
     {

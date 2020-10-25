@@ -8,9 +8,11 @@ using UnityEngine.UI;
 
 public class PlayerInterface : MonoBehaviour
 {
+    public static PlayerInterface current;
     private Transform m_transform;
     private Transform m_camera;
     private Item m_item;
+    public bool _showInteract = true;
     [SerializeField] private InputPanelScript inputPanelScript;
     [SerializeField] private InteractPanelScript interactPanel;
 
@@ -28,12 +30,23 @@ public class PlayerInterface : MonoBehaviour
         }
     }
 
+    public bool showInteract
+    {
+        get => _showInteract;
+        set
+        {
+            _showInteract = value;
+            if (!_showInteract) Item = null;
+        }
+    }
+
     public delegate void OnItemChangedDelegate();
     public event OnItemChangedDelegate OnItemChanged;
     
 
     private void INIT()
     {
+        current = this;
         m_transform = transform;
         m_camera = transform.GetComponentInChildren<Camera>().transform;
         interactPanel = CanvasScript.current.interactPanel;
@@ -42,8 +55,8 @@ public class PlayerInterface : MonoBehaviour
 
     private void INPUTS()
     {
-        BaseInputManager.Interface.GotoCommandMode.performed += c => SwitchToCommandMode();
-        BaseInputManager.CommandMode.ExitFromCommandMode.performed += c => SwitchFromCommandMode();
+        BaseInputManager.Interface.GotoCommandMode.performed += c => inputPanelScript.SwitchToCommandMode();;
+        BaseInputManager.CommandMode.ExitFromCommandMode.performed += c => inputPanelScript.SwitchFromCommandMode();
         BaseInputManager.Interface.Interact.performed += c => Interact();
     }
     
@@ -51,7 +64,7 @@ public class PlayerInterface : MonoBehaviour
     {
         OnItemChanged += ShowInteract;
     }
-    
+
     private void Awake()
     {
         INIT();
@@ -59,53 +72,34 @@ public class PlayerInterface : MonoBehaviour
         EVENTS();
     }
 
-    void SwitchToCommandMode()
-    {
-        BaseInputManager.PlayerMovement.Disable();
-        BaseInputManager.Interface.Disable();
-        BaseInputManager.CommandMode.Enable();
-        inputPanelScript.SwitchToCommandMode();
-    }
-
-    void SwitchFromCommandMode()
-    {
-        BaseInputManager.PlayerMovement.Enable();
-        BaseInputManager.Interface.Enable();
-        BaseInputManager.CommandMode.Disable();
-        inputPanelScript.SwitchFromCommandMode();
-    }
-    
     private void ShowInteract()
     {
-        if (Item is null)
-        {
-            interactPanel.SetActive(false);
-            return;
-        }
-
-        interactPanel.CaptureName = Item.interactName();
-        interactPanel.SetActive(true);
+        interactPanel.ShowInteract(Item);
     }
 
     private void Interact()
     {
         if (Item is null) return;
         Item.Interact();
+        Item = null;
     }
     
     RaycastHit raycastHit;
 
     private void updateRaycast()
     {
-        bool hasContact = Physics.Raycast(
-            m_camera.position, 
-            m_camera.forward, 
-            out raycastHit, 
-            5f);
-        
-        Item newItem = null;
-        bool gotItem = hasContact ? raycastHit.collider.TryGetComponent(out newItem) : false;
-        Item = newItem;
+        if (_showInteract)
+        {
+            bool hasContact = Physics.Raycast(
+                m_camera.position,
+                m_camera.forward,
+                out raycastHit,
+                5f);
+
+            Item newItem = null;
+            bool gotItem = hasContact ? raycastHit.collider.TryGetComponent(out newItem) : false;
+            Item = newItem;
+        }
     }
     
     private void Update()

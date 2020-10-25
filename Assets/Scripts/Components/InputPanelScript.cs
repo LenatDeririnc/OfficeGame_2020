@@ -53,12 +53,20 @@ public class InputPanelScript : MonoBehaviour
 
     public void SwitchToCommandMode()
     {
+        BaseInputManager.PlayerMovement.Disable();
+        BaseInputManager.Interface.Disable();
+        BaseInputManager.CommandMode.Enable();
+        PlayerInterface.current.showInteract = false;
         gameObject.SetActive(true);
         inputField.ActivateInputField();
     }
 
     public void SwitchFromCommandMode()
     {
+        BaseInputManager.PlayerMovement.Enable();
+        BaseInputManager.Interface.Enable();
+        BaseInputManager.CommandMode.Disable();
+        PlayerInterface.current.showInteract = true;
         gameObject.SetActive(false);
         clearTypeLine();        
     }
