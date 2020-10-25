@@ -4,18 +4,53 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.PlayerLoop;
+using UnityEngine.UI;
 
 public class PlayerInterface : MonoBehaviour
 {
+    private Transform m_transform;
+    private Transform m_camera;
+    private Item m_item;
+    [SerializeField] private GameObject interactPanel;
+
+    public Item Item
+    {
+        get => m_item;
+        set
+        {
+            if (m_item == value) return;
+            m_item = value;
+            if (OnItemChanged != null)
+                OnItemChanged();
+        }
+    }
+
+    public delegate void OnItemChangedDelegate();
+    public event OnItemChangedDelegate OnItemChanged;
+    
+
+    private void INIT()
+    {
+        m_transform = transform;
+        m_camera = transform.GetComponentInChildren<Camera>().transform;
+    }
+
     private void INPUTS()
     {
         BaseInputManager.Interface.GotoCommandMode.performed += c => SwitchToCommandMode();
         BaseInputManager.CommandMode.ExitFromCommandMode.performed += c => SwitchFromCommandMode();
     }
     
+    private void EVENTS()
+    {
+        OnItemChanged += ShowInteract;
+    }
+    
     private void Awake()
     {
+        INIT();
         INPUTS();
+        EVENTS();
     }
 
     void SwitchToCommandMode()
@@ -34,5 +69,24 @@ public class PlayerInterface : MonoBehaviour
         GameEvents.current.CommandModeExited();
     }
     
+    private void ShowInteract()
+    {
+        if (m_item is null)
+        {
+            interactPanel.SetActive(false);
+            return;
+        }
+
+        interactPanel.SetActive(true);
+    }
+    
+    RaycastHit raycastHit;
+    private void Update()
+    {
+        bool hasContact = Physics.Raycast(m_camera.position, m_camera.forward, out raycastHit, 10f);
+        Item newItem = null;
+        bool gotItem = hasContact ? raycastHit.collider.TryGetComponent(out newItem) : false;
+        Item = newItem;
+    }
 }
 
