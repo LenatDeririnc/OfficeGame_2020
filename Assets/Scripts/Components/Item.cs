@@ -8,5 +8,7 @@ public abstract class Item : MonoBehaviour
 
     public abstract string ID();
 
+    public abstract string interactName();
+
     public abstract void Interact();
 }

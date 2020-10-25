@@ -11,7 +11,7 @@ public class PlayerInterface : MonoBehaviour
     private Transform m_transform;
     private Transform m_camera;
     private Item m_item;
-    [SerializeField] private GameObject interactPanel;
+    [SerializeField] private InteractPanelScript interactPanel;
 
     public Item Item
     {
@@ -35,6 +35,7 @@ public class PlayerInterface : MonoBehaviour
     {
         m_transform = transform;
         m_camera = transform.GetComponentInChildren<Camera>().transform;
+        interactPanel = GameManager.current.interactPanelScript;
     }
 
     private void INPUTS()
@@ -80,6 +81,7 @@ public class PlayerInterface : MonoBehaviour
             return;
         }
 
+        interactPanel.CaptureName = Item.interactName();
         interactPanel.SetActive(true);
     }
 

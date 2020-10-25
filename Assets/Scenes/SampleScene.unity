@@ -1174,13 +1174,14 @@ GameObject:
   - component: {fileID: 684712307}
   - component: {fileID: 684712309}
   - component: {fileID: 684712308}
+  - component: {fileID: 684712310}
   m_Layer: 5
   m_Name: InteractText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &684712307
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1198,7 +1199,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -191}
-  m_SizeDelta: {x: 366.6278, y: 57.934708}
+  m_SizeDelta: {x: 1327.4473, y: 57.934708}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &684712308
 MonoBehaviour:
@@ -1297,6 +1298,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 684712306}
   m_CullTransparentMesh: 0
+--- !u!114 &684712310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 684712306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c8bcd94ca5485e40be06a7b72a0600d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -2162,7 +2175,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1549303040
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2196,7 +2209,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.21809362, g: 0.22663075, b: 0.2735849, a: 1}
+  m_Color: {r: 0.21809362, g: 0.22663075, b: 0.2735849, a: 0.53333336}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -2706,6 +2719,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   commands: {fileID: 0}
+  interactPanelScript: {fileID: 684712310}
 --- !u!4 &2047827279
 Transform:
   m_ObjectHideFlags: 0
@@ -2801,7 +2815,7 @@ PrefabInstance:
         type: 3}
       propertyPath: interactPanel
       value: 
-      objectReference: {fileID: 684712306}
+      objectReference: {fileID: 0}
     - target: {fileID: 5902016491919885063, guid: 5704d2fab32e30f45b1ddcbd62d444b5,
         type: 3}
       propertyPath: m_LocalPosition.x

@@ -6,7 +6,9 @@ public class TakableItem : Item
 {
     [SerializeField] private string m_id = "";
     public override string ID() => m_id;
-    
+
+    public override string interactName() => "Взять";
+
     [SerializeField] private string message = "";
     public override void Interact()
     {

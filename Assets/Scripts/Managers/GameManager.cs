@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager current;
     public Commands commands;
+    public InteractPanelScript interactPanelScript;
     private void Awake()
     {
         BaseInputManager.Init();

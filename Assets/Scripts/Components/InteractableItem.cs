@@ -9,6 +9,8 @@ public class InteractableItem : Item
     [SerializeField] private float m_health = 100;
     [SerializeField] private float m_changeHealthSpeed = 1;
 
+    public override string interactName() => "Использовать";
+
     public float Health
     {
         get => m_health;

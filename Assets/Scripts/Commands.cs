@@ -12,7 +12,7 @@ public class Commands : MonoBehaviour
     {
         CommandLibary = new Dictionary<string, Action<string[]>>();
         CommandLibary.Add("test", Helloworld);
-        CommandLibary.Add("take", Take);
+        CommandLibary.Add("interact", interact);
     }
 
     public void CheckCommand(string[] args)
@@ -25,7 +25,7 @@ public class Commands : MonoBehaviour
         inputPanel.WriteToConsole("Hello world!");
     }
     
-    private void Take(string[] args)
+    private void interact(string[] args)
     {
         if (args.Length <= 1) return;
         
