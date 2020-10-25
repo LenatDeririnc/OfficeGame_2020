@@ -8,6 +8,7 @@ public class CanvasScript : MonoBehaviour
     public static CanvasScript current;
     public InputPanelScript inputPanel;
     public InteractPanelScript interactPanel;
+    public GachaPanel gachaPanel;
 
     private void Awake()
     {

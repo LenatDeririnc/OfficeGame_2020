@@ -1,13 +1,5 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Data;
-using System.Runtime.Remoting.Messaging;
-using UnityEngine;
-using UnityEngine.Events;
+﻿using UnityEngine;
 using TMPro;
-using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 public class InputPanelScript : MonoBehaviour
 {
