@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -11,6 +12,7 @@ public static class BaseInputManager
     public static CustomCharacterInput.CommandModeActions CommandMode;
     public static CustomCharacterInput.InterfaceActions Interface;
     public static CustomCharacterInput.DevelopActions Develop;
+    public static CustomCharacterInput.NoteActions Note;
 
     public static void Init()
     {
@@ -19,6 +21,8 @@ public static class BaseInputManager
         CommandMode = customCharacterInput.CommandMode;
         Interface = customCharacterInput.Interface;
         Develop = customCharacterInput.Develop;
+        Note = customCharacterInput.Note;
+        
 
         PlayerMovement.Enable();
         Interface.Enable();

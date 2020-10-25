@@ -152,14 +152,16 @@ namespace ECM.Components
         public float horizontalVelocity
         {
             get { return _horizontalVelocity; }
-            set { _horizontalVelocity = Mathf.Clamp(value, -1, 1); }
+            // set { _horizontalVelocity = Mathf.Clamp(value, -1, 1); }
+            set { _horizontalVelocity = value; }
         }
 
         public float _verticalVelocity = 0;
         public float verticalVelocity
         {
             get { return _verticalVelocity; }
-            set { _verticalVelocity = Mathf.Clamp(value, -1, 1); }
+            // set { _verticalVelocity = Mathf.Clamp(value, -1, 1); }
+            set { _verticalVelocity = value; }
         }
 
         public float _sensivityVerticalTime = 0;
@@ -185,33 +187,15 @@ namespace ECM.Components
             characterTargetRotation = characterTransform.localRotation;
             cameraTargetRotation = cameraTransform.localRotation;
         }
-
-        public bool isHorizontalViewPressed = false;
-        public void HorizontalVelocity(InputAction.CallbackContext context, bool isButtonPressed)
+        
+        public void HorizontalVelocity(InputAction.CallbackContext context)
         {
-            isHorizontalViewPressed = isButtonPressed;
             horizontalVelocity = context.ReadValue<float>();
         }
-
-        public bool isVerticalViewPressed = false;
-        public void VerticalVelocity(InputAction.CallbackContext context, bool isButtonPressed)
+        
+        public void VerticalVelocity(InputAction.CallbackContext context)
         {
-            isVerticalViewPressed = isButtonPressed;
             verticalVelocity = context.ReadValue<float>();
-        }
-
-        public void IncreaseHorizontalSensivity()
-        {
-            sensivityHorizontalTime = isHorizontalViewPressed
-                ? sensivityHorizontalTime + _smoothSpeed * Time.deltaTime
-                : 0;
-        }
-
-        public void IncreaseVerticalSensivity()
-        {
-            sensivityVerticalTime = isVerticalViewPressed
-                ? sensivityVerticalTime + _smoothSpeed * Time.deltaTime
-                : 0;
         }
 
         /// <summary>
@@ -223,11 +207,9 @@ namespace ECM.Components
 
         public virtual void LookRotation(CharacterMovement movement, Transform cameraTransform)
         {
-            IncreaseVerticalSensivity();
-            IncreaseHorizontalSensivity();
 
-            var yaw = horizontalVelocity * sensivityHorizontalTime * lateralSensitivity;
-            var pitch = verticalVelocity * sensivityVerticalTime * verticalSensitivity;
+            var yaw = horizontalVelocity * lateralSensitivity;
+            var pitch = verticalVelocity * verticalSensitivity;
 
             var yawRotation = Quaternion.Euler(0.0f, yaw, 0.0f);
             var pitchRotation = Quaternion.Euler(-pitch, 0.0f, 0.0f);
@@ -295,7 +277,7 @@ namespace ECM.Components
         {
             if (_isCursorLocked)
             {
-                Cursor.lockState = CursorLockMode.Confined;
+                Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
             }
             else if (!_isCursorLocked)
@@ -309,10 +291,10 @@ namespace ECM.Components
         {
             BaseInputManager.Develop.UnlockCursorKey.performed += context => UnlockCursor(context);
 
-            BaseInputManager.PlayerMovement.ViewHorizontal.started += context => HorizontalVelocity(context, true);
-            BaseInputManager.PlayerMovement.ViewHorizontal.canceled += context => HorizontalVelocity(context, false);
-            BaseInputManager.PlayerMovement.ViewVertical.started += context => VerticalVelocity(context, true);
-            BaseInputManager.PlayerMovement.ViewVertical.canceled += context => VerticalVelocity(context, false);
+            BaseInputManager.PlayerMovement.ViewHorizontal.performed += context => HorizontalVelocity(context);
+            BaseInputManager.PlayerMovement.ViewHorizontal.canceled += context => HorizontalVelocity(context);
+            BaseInputManager.PlayerMovement.ViewVertical.performed += context => VerticalVelocity(context);
+            BaseInputManager.PlayerMovement.ViewVertical.canceled += context => VerticalVelocity(context);
         }
 
         protected Quaternion ClampPitch(Quaternion q)

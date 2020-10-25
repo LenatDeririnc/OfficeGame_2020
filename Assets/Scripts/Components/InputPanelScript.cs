@@ -1,28 +1,17 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Data;
-using System.Runtime.Remoting.Messaging;
-using UnityEngine;
-using UnityEngine.Events;
+﻿using UnityEngine;
 using TMPro;
-using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 public class InputPanelScript : MonoBehaviour
 {
     #region INIT
     
     public bool CommandModeActivated = false;
-    public GameObject fieldObject;
     public TMP_Text logField;
     public TMP_InputField inputField;
 
     private void INIT()
     {
-        GameEvents.current.onCommandModeActivated += SwitchToCommandMode;
-        GameEvents.current.onCommandModeExited += SwitchFromCommandMode;
-        fieldObject.SetActive(CommandModeActivated);
+        gameObject.SetActive(CommandModeActivated);
     }
 
     private void Awake()
@@ -31,11 +20,16 @@ public class InputPanelScript : MonoBehaviour
         _typingLog = logField.text;
     }
 
+    public void SetActive(bool state)
+    {
+        gameObject.SetActive(state);
+    }
+
     #endregion
 
     #region FIELDS
 
-    public string typingLine;
+    private string typingLine;
 
     private string _typingLog;
     
@@ -51,13 +45,21 @@ public class InputPanelScript : MonoBehaviour
 
     public void SwitchToCommandMode()
     {
-        fieldObject.SetActive(true);
+        BaseInputManager.PlayerMovement.Disable();
+        BaseInputManager.Interface.Disable();
+        BaseInputManager.CommandMode.Enable();
+        PlayerInterface.current.showInteract = false;
+        gameObject.SetActive(true);
         inputField.ActivateInputField();
     }
 
     public void SwitchFromCommandMode()
     {
-        fieldObject.SetActive(false);
+        BaseInputManager.PlayerMovement.Enable();
+        BaseInputManager.Interface.Enable();
+        BaseInputManager.CommandMode.Disable();
+        PlayerInterface.current.showInteract = true;
+        gameObject.SetActive(false);
         clearTypeLine();        
     }
 
@@ -76,7 +78,7 @@ public class InputPanelScript : MonoBehaviour
     {
         typingLog = typingLine;
         logField.text = typingLog;
-        GameManager.current.commands.CheckCommand(typingLine.Split(' '));
+        Commands.current.CheckCommand(typingLine.Split(' '));
         typingLine = "";
         clearTypeLine();
         inputField.ActivateInputField();

@@ -5,14 +5,16 @@ using UnityEngine;
 
 public class Commands : MonoBehaviour
 {
+    public static Commands current;
     private Dictionary<string, Action<string[]>> CommandLibary;
     public InputPanelScript inputPanel;
 
     public void Awake()
     {
+        current = this;
         CommandLibary = new Dictionary<string, Action<string[]>>();
         CommandLibary.Add("test", Helloworld);
-        CommandLibary.Add("take", Take);
+        CommandLibary.Add("interact", interact);
     }
 
     public void CheckCommand(string[] args)
@@ -25,16 +27,16 @@ public class Commands : MonoBehaviour
         inputPanel.WriteToConsole("Hello world!");
     }
     
-    private void Take(string[] args)
+    private void interact(string[] args)
     {
         if (args.Length <= 1) return;
         
         Item[] items = GameObject.FindObjectsOfType<Item>();
         foreach (Item item in items)
         {
-            if (item.ID == args[1])
+            if (item.ID() == args[1])
             {
-                item.Take();
+                item.Interact();
                 break;
             }
         }
