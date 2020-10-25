@@ -382,6 +382,14 @@ public class @CustomCharacterInput : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""87c60993-bca5-41de-bb3c-07019187d630"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -461,6 +469,17 @@ public class @CustomCharacterInput : IInputActionCollection, IDisposable
                     ""action"": ""GotoCommandMode"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ec268fe9-b6ef-46b4-8959-8d317c51bb4a"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -529,6 +548,7 @@ public class @CustomCharacterInput : IInputActionCollection, IDisposable
         m_Interface_Pause = m_Interface.FindAction("Pause", throwIfNotFound: true);
         m_Interface_Inventory = m_Interface.FindAction("Inventory", throwIfNotFound: true);
         m_Interface_GotoCommandMode = m_Interface.FindAction("GotoCommandMode", throwIfNotFound: true);
+        m_Interface_Interact = m_Interface.FindAction("Interact", throwIfNotFound: true);
         // Develop
         m_Develop = asset.FindActionMap("Develop", throwIfNotFound: true);
         m_Develop_UnlockCursorKey = m_Develop.FindAction("UnlockCursorKey", throwIfNotFound: true);
@@ -706,6 +726,7 @@ public class @CustomCharacterInput : IInputActionCollection, IDisposable
     private readonly InputAction m_Interface_Pause;
     private readonly InputAction m_Interface_Inventory;
     private readonly InputAction m_Interface_GotoCommandMode;
+    private readonly InputAction m_Interface_Interact;
     public struct InterfaceActions
     {
         private @CustomCharacterInput m_Wrapper;
@@ -713,6 +734,7 @@ public class @CustomCharacterInput : IInputActionCollection, IDisposable
         public InputAction @Pause => m_Wrapper.m_Interface_Pause;
         public InputAction @Inventory => m_Wrapper.m_Interface_Inventory;
         public InputAction @GotoCommandMode => m_Wrapper.m_Interface_GotoCommandMode;
+        public InputAction @Interact => m_Wrapper.m_Interface_Interact;
         public InputActionMap Get() { return m_Wrapper.m_Interface; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -731,6 +753,9 @@ public class @CustomCharacterInput : IInputActionCollection, IDisposable
                 @GotoCommandMode.started -= m_Wrapper.m_InterfaceActionsCallbackInterface.OnGotoCommandMode;
                 @GotoCommandMode.performed -= m_Wrapper.m_InterfaceActionsCallbackInterface.OnGotoCommandMode;
                 @GotoCommandMode.canceled -= m_Wrapper.m_InterfaceActionsCallbackInterface.OnGotoCommandMode;
+                @Interact.started -= m_Wrapper.m_InterfaceActionsCallbackInterface.OnInteract;
+                @Interact.performed -= m_Wrapper.m_InterfaceActionsCallbackInterface.OnInteract;
+                @Interact.canceled -= m_Wrapper.m_InterfaceActionsCallbackInterface.OnInteract;
             }
             m_Wrapper.m_InterfaceActionsCallbackInterface = instance;
             if (instance != null)
@@ -744,6 +769,9 @@ public class @CustomCharacterInput : IInputActionCollection, IDisposable
                 @GotoCommandMode.started += instance.OnGotoCommandMode;
                 @GotoCommandMode.performed += instance.OnGotoCommandMode;
                 @GotoCommandMode.canceled += instance.OnGotoCommandMode;
+                @Interact.started += instance.OnInteract;
+                @Interact.performed += instance.OnInteract;
+                @Interact.canceled += instance.OnInteract;
             }
         }
     }
@@ -810,6 +838,7 @@ public class @CustomCharacterInput : IInputActionCollection, IDisposable
         void OnPause(InputAction.CallbackContext context);
         void OnInventory(InputAction.CallbackContext context);
         void OnGotoCommandMode(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
     }
     public interface IDevelopActions
     {

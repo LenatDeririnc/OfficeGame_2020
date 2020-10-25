@@ -2,12 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Item : MonoBehaviour
+public abstract class Item : MonoBehaviour
 {
-    public string ID = "sword";
+    public abstract string ID();
 
-    public void Take()
-    {
-        Destroy(gameObject);
-    }
+    public abstract void Interact();
 }

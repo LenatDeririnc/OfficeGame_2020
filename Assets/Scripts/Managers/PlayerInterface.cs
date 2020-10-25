@@ -39,6 +39,7 @@ public class PlayerInterface : MonoBehaviour
     {
         BaseInputManager.Interface.GotoCommandMode.performed += c => SwitchToCommandMode();
         BaseInputManager.CommandMode.ExitFromCommandMode.performed += c => SwitchFromCommandMode();
+        BaseInputManager.Interface.Interact.performed += c => Interact();
     }
     
     private void EVENTS()
@@ -71,7 +72,7 @@ public class PlayerInterface : MonoBehaviour
     
     private void ShowInteract()
     {
-        if (m_item is null)
+        if (Item is null)
         {
             interactPanel.SetActive(false);
             return;
@@ -79,14 +80,31 @@ public class PlayerInterface : MonoBehaviour
 
         interactPanel.SetActive(true);
     }
+
+    private void Interact()
+    {
+        if (Item is null) return;
+        Item.Interact();
+        interactPanel.SetActive(false);
+    }
     
     RaycastHit raycastHit;
-    private void Update()
+
+    private void updateRaycast()
     {
-        bool hasContact = Physics.Raycast(m_camera.position, m_camera.forward, out raycastHit, 10f);
         Item newItem = null;
+        bool hasContact = Physics.Raycast(
+            m_camera.position, 
+            m_camera.forward, 
+            out raycastHit, 
+            5f);
         bool gotItem = hasContact ? raycastHit.collider.TryGetComponent(out newItem) : false;
         Item = newItem;
+    }
+    
+    private void Update()
+    {
+        updateRaycast();
     }
 }
 

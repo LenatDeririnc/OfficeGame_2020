@@ -32,9 +32,9 @@ public class Commands : MonoBehaviour
         Item[] items = GameObject.FindObjectsOfType<Item>();
         foreach (Item item in items)
         {
-            if (item.ID == args[1])
+            if (item.ID() == args[1])
             {
-                item.Take();
+                item.Interact();
                 break;
             }
         }
