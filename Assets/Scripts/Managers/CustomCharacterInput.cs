@@ -509,6 +509,55 @@ public class @CustomCharacterInput : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Note"",
+            ""id"": ""0efb212b-4ee0-4af9-9418-4037fc00fbb5"",
+            ""actions"": [
+                {
+                    ""name"": ""Exit"",
+                    ""type"": ""Button"",
+                    ""id"": ""a8ea57f3-598f-44c0-a8e2-f44417e9acac"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""c37ef144-5a49-4fd7-8560-953eafcbaaa3"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Exit"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ca0a4892-a0bd-43dd-aac6-c322ea2f0d9c"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Exit"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fe688ca4-6f3b-4033-9789-fcd8de325322"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Exit"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -552,6 +601,9 @@ public class @CustomCharacterInput : IInputActionCollection, IDisposable
         // Develop
         m_Develop = asset.FindActionMap("Develop", throwIfNotFound: true);
         m_Develop_UnlockCursorKey = m_Develop.FindAction("UnlockCursorKey", throwIfNotFound: true);
+        // Note
+        m_Note = asset.FindActionMap("Note", throwIfNotFound: true);
+        m_Note_Exit = m_Note.FindAction("Exit", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -809,6 +861,39 @@ public class @CustomCharacterInput : IInputActionCollection, IDisposable
         }
     }
     public DevelopActions @Develop => new DevelopActions(this);
+
+    // Note
+    private readonly InputActionMap m_Note;
+    private INoteActions m_NoteActionsCallbackInterface;
+    private readonly InputAction m_Note_Exit;
+    public struct NoteActions
+    {
+        private @CustomCharacterInput m_Wrapper;
+        public NoteActions(@CustomCharacterInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Exit => m_Wrapper.m_Note_Exit;
+        public InputActionMap Get() { return m_Wrapper.m_Note; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(NoteActions set) { return set.Get(); }
+        public void SetCallbacks(INoteActions instance)
+        {
+            if (m_Wrapper.m_NoteActionsCallbackInterface != null)
+            {
+                @Exit.started -= m_Wrapper.m_NoteActionsCallbackInterface.OnExit;
+                @Exit.performed -= m_Wrapper.m_NoteActionsCallbackInterface.OnExit;
+                @Exit.canceled -= m_Wrapper.m_NoteActionsCallbackInterface.OnExit;
+            }
+            m_Wrapper.m_NoteActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Exit.started += instance.OnExit;
+                @Exit.performed += instance.OnExit;
+                @Exit.canceled += instance.OnExit;
+            }
+        }
+    }
+    public NoteActions @Note => new NoteActions(this);
     private int m_KeyboardSchemeIndex = -1;
     public InputControlScheme KeyboardScheme
     {
@@ -843,5 +928,9 @@ public class @CustomCharacterInput : IInputActionCollection, IDisposable
     public interface IDevelopActions
     {
         void OnUnlockCursorKey(InputAction.CallbackContext context);
+    }
+    public interface INoteActions
+    {
+        void OnExit(InputAction.CallbackContext context);
     }
 }

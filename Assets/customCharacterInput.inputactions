@@ -496,6 +496,55 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Note",
+            "id": "0efb212b-4ee0-4af9-9418-4037fc00fbb5",
+            "actions": [
+                {
+                    "name": "Exit",
+                    "type": "Button",
+                    "id": "a8ea57f3-598f-44c0-a8e2-f44417e9acac",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "c37ef144-5a49-4fd7-8560-953eafcbaaa3",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Exit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ca0a4892-a0bd-43dd-aac6-c322ea2f0d9c",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Exit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fe688ca4-6f3b-4033-9789-fcd8de325322",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Exit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [
