@@ -229,6 +229,17 @@ public class @CustomCharacterInput : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""93743fcf-e3db-4445-ba07-990fda88f652"",
+                    ""path"": ""<Touchscreen>/delta/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""View Horizontal"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""61be31c3-f9ce-4fd8-b327-1edad5eb2c69"",
                     ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
@@ -245,6 +256,17 @@ public class @CustomCharacterInput : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
+                    ""action"": ""View Vertical"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2e8e0dd4-2d94-4828-a95d-5f4b6e98f4b3"",
+                    ""path"": ""<Touchscreen>/delta/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
                     ""action"": ""View Vertical"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
