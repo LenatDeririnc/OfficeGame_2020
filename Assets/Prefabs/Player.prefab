@@ -261,8 +261,6 @@ MonoBehaviour:
   _verticalVelocity: 0
   _sensivityVerticalTime: 0
   _sensivityHorizontalTime: 0
-  isHorizontalViewPressed: 0
-  isVerticalViewPressed: 0
 --- !u!114 &5902016491919885065
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -311,6 +309,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5a14c194b3e68c46b49b7a840e13088, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _showInteract: 1
+  inputPanelScript: {fileID: 0}
+  interactPanel: {fileID: 0}
 --- !u!1 &5902016492440935538
 GameObject:
   m_ObjectHideFlags: 0
@@ -323,6 +324,7 @@ GameObject:
   - component: {fileID: 5902016492440935534}
   - component: {fileID: 5902016492440935535}
   - component: {fileID: 5902016492440935532}
+  - component: {fileID: 8211042347828622318}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -381,7 +383,7 @@ Camera:
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1
-  m_AllowMSAA: 1
+  m_AllowMSAA: 0
   m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
@@ -403,3 +405,63 @@ Behaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5902016492440935538}
   m_Enabled: 1
+--- !u!114 &8211042347828622318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5902016492440935538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 948f4100a11a5c24981795d21301da5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volumeTrigger: {fileID: 5902016492440935533}
+  volumeLayer:
+    serializedVersion: 2
+    m_Bits: 512
+  stopNaNPropagation: 1
+  finalBlitToCameraTarget: 0
+  antialiasingMode: 3
+  temporalAntialiasing:
+    jitterSpread: 0.75
+    sharpness: 0.25
+    stationaryBlending: 0.95
+    motionBlending: 0.85
+  subpixelMorphologicalAntialiasing:
+    quality: 2
+  fastApproximateAntialiasing:
+    fastMode: 0
+    keepAlpha: 0
+  fog:
+    enabled: 1
+    excludeSkybox: 1
+  debugLayer:
+    lightMeter:
+      width: 512
+      height: 256
+      showCurves: 1
+    histogram:
+      width: 512
+      height: 256
+      channel: 3
+    waveform:
+      exposure: 0.12
+      height: 256
+    vectorscope:
+      size: 256
+      exposure: 0.12
+    overlaySettings:
+      linearDepth: 0
+      motionColorIntensity: 4
+      motionGridSize: 64
+      colorBlindnessType: 0
+      colorBlindnessStrength: 1
+  m_Resources: {fileID: 11400000, guid: d82512f9c8e5d4a4d938b575d47f88d4, type: 2}
+  m_ShowToolkit: 0
+  m_ShowCustomSorter: 0
+  breakBeforeColorGrading: 0
+  m_BeforeTransparentBundles: []
+  m_BeforeStackBundles: []
+  m_AfterStackBundles: []
