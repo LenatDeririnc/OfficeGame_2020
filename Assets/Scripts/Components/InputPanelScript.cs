@@ -51,6 +51,7 @@ public class InputPanelScript : MonoBehaviour
         PlayerInterface.current.showInteract = false;
         gameObject.SetActive(true);
         inputField.ActivateInputField();
+        CanvasScript.current.commandsPanel.SetActive(true);
     }
 
     public void SwitchFromCommandMode()
@@ -60,7 +61,8 @@ public class InputPanelScript : MonoBehaviour
         BaseInputManager.CommandMode.Disable();
         PlayerInterface.current.showInteract = true;
         gameObject.SetActive(false);
-        clearTypeLine();        
+        clearTypeLine();
+        CanvasScript.current.commandsPanel.SetActive(false);
     }
 
     public void clearTypeLine()
@@ -78,7 +80,7 @@ public class InputPanelScript : MonoBehaviour
     {
         typingLog = typingLine;
         logField.text = typingLog;
-        Commands.current.CheckCommand(typingLine.Split(' '));
+        Commands.current.CheckCommand(typingLine);
         typingLine = "";
         clearTypeLine();
         inputField.ActivateInputField();

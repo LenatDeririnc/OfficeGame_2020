@@ -41,7 +41,7 @@ public class InteractPanelScript : MonoBehaviour
             return;
         }
 
-        CaptureName = item.interactName();
+        CaptureName = item.InteractName();
         SetActive(true);
     }
 

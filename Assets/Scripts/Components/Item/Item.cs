@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public abstract class Item : MonoBehaviour
 {
@@ -8,7 +6,7 @@ public abstract class Item : MonoBehaviour
 
     public abstract string ID();
 
-    public abstract string interactName();
+    public abstract string InteractName();
 
     public abstract void Interact();
 }
