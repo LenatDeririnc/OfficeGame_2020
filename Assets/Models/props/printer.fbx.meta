@@ -1,8 +1,11 @@
 fileFormatVersion: 2
-guid: 786553d8ebe365b4ea0ded70c47e92f4
+guid: 36014329a68f31b48b8a944a82ce463f
 ModelImporter:
   serializedVersion: 19301
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      74: -5745064424099802376
+    second: printer_animation|printer_animationAction.001
   externalObjects: {}
   materials:
     materialImportMode: 1
