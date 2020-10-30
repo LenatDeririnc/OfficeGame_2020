@@ -67,7 +67,6 @@ public class GameOverTimer : MonoBehaviour
     {
         while (!isTerminated)
         {
-            Debug.Log("fuck111");
             currentTMPText.text = firstMessage + "\n" + timer + " сек.";
             yield return new WaitForSeconds(1);
             timer = timer - 1;

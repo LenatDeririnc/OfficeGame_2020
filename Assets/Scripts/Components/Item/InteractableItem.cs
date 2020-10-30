@@ -47,7 +47,6 @@ public class InteractableItem : Item
         {
             if (m_currentStatus == value) return;
             m_currentStatus = value;
-            Debug.Log(m_currentStatus.ToString());
         }
     }
 
