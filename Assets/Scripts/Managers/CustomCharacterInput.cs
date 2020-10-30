@@ -240,17 +240,6 @@ public class @CustomCharacterInput : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""61be31c3-f9ce-4fd8-b327-1edad5eb2c69"",
-                    ""path"": ""<Keyboard>/space"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard"",
-                    ""action"": ""Jump"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""529bf90f-578f-472d-b295-62968be668f4"",
                     ""path"": ""<Mouse>/delta/y"",
                     ""interactions"": """",
