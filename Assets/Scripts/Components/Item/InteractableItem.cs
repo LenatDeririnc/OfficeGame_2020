@@ -37,7 +37,7 @@ public class InteractableItem : Item
     public float health
     {
         get => m_health;
-        set => m_health = Mathf.Clamp(value, 0, 100);
+        set => m_health = Mathf.Clamp(value, 0, maxHealth);
     }
 
     public StationStatus CurrentStatus
