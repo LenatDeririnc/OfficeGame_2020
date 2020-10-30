@@ -106,11 +106,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 561a83e067f549b48e9659d062ea1855, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_id: "\u0417\u043E\u043D\u0430 1"
-  m_health: 100
-  m_maxHealth: 100
-  m_changeHealthSpeed: 1
+  m_id: Workstation
+  m_health: 500
+  m_maxHealth: 1000
+  m_changeHealthSpeed: 3
+  m_greenZone: 800
+  m_redZone: 200
   m_command: 1
-  m_isActive: 0
-  m_logMessage: "\u0410\u043A\u0442\u0438\u0432\u0438\u0440\u043E\u0432\u0430\u043D\u043E
-    \u044F\u0431\u043B\u043E\u043A\u043E 1"
+  m_logMessage: 'RDP Access: object, launching script... Success!'
