@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.CompilerServices;
 using JetBrains.Annotations;
 using TMPro;
 using UnityEngine;
@@ -23,9 +25,10 @@ public class StationsPanel : MonoBehaviour
     {
         string outString = "Станции\n";
         outString += "-----------\n";
+
         foreach (InteractableItem item in items)
         {
-            outString += item.name + " - " + item.health + "/" + item.maxHealth + "\n";
+            outString += item.ID() + " - " + item.health + "/" + item.maxHealth + "\n";
         }
         text.text = outString;
     }

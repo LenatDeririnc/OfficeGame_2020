@@ -1,13 +1,18 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
+using Debug = UnityEngine.Debug;
 
 public class InteractableItem : Item
 {
     #region init
     private GameObject m_gameObject;
     private IEnumerator DegreseHealth;
+    private bool m_isActive;
+    private StationStatus m_currentStatus;
 
     #endregion
 
@@ -17,8 +22,9 @@ public class InteractableItem : Item
     [SerializeField] private float m_health;
     [SerializeField] private float m_maxHealth = 100;
     [SerializeField] private float m_changeHealthSpeed = 1;
+    [SerializeField] private float m_greenZone = 75;
+    [SerializeField] private float m_redZone = 25;
     [SerializeField] private string m_command = "";
-    [SerializeField] private bool m_isActive;
     [SerializeField] private string m_logMessage;
 
     #endregion
@@ -34,12 +40,42 @@ public class InteractableItem : Item
         set => m_health = Mathf.Clamp(value, 0, 100);
     }
 
+    public StationStatus CurrentStatus
+    {
+        get => m_currentStatus;
+        set
+        {
+            if (m_currentStatus == value) return;
+            m_currentStatus = value;
+            Debug.Log(m_currentStatus.ToString());
+        }
+    }
+
     public float maxHealth => m_maxHealth;
     public override string InteractName() => "Использовать";
     public Action InteractWithCommand() => CommandInteract;
     #endregion
 
     #region logic
+
+    public void setCurrentStatus()
+    {
+        switch (health)
+        {
+            default:
+                CurrentStatus = StationStatus.Great;
+                break;
+            case float h when (m_redZone < h && h <= m_greenZone):
+                CurrentStatus = StationStatus.Ok;
+                break;
+            case float h when (0 < h && h <= m_redZone):
+                CurrentStatus = StationStatus.Bad;
+                break;
+            case float h when (h == 0):
+                CurrentStatus = StationStatus.Died;
+                break;
+        }
+    }
 
     public void setActive()
     {
@@ -66,7 +102,7 @@ public class InteractableItem : Item
 
     public override void Interact()
     {
-        m_health = 100f;
+        m_health = maxHealth;
     }
 
     private IEnumerator HealthDegreaseCoroutine()
@@ -74,11 +110,6 @@ public class InteractableItem : Item
         while (true)
         {
             health -= m_changeHealthSpeed;
-            if (health == 0)
-            {
-                m_gameObject.SetActive(false);
-                break;
-            }
             yield return new WaitForSeconds(0.1f);
         }
     }
@@ -93,6 +124,19 @@ public class InteractableItem : Item
         }
         StopCoroutine(DegreseHealth);
     }
+
+    private void Update()
+    {
+        setCurrentStatus();
+    }
     
     #endregion
+}
+
+public enum StationStatus
+{
+    Great,
+    Ok,
+    Bad,
+    Died
 }
