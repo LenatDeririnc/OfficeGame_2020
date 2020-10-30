@@ -39,8 +39,10 @@ public class StationsPanel : MonoBehaviour
 
         foreach (InteractableItem item in items)
         {
-            var itemStatus = colorStatus[item.CurrentStatus];
-            outString += itemStatus + item.ID() + " - " + item.health + "/" + item.maxHealth + "\n";
+            string itemStatus = colorStatus[item.CurrentStatus];
+            string timeString = item.health > 0 ? string.Format("{0000, 3:###}", item.health) : "  0";
+            
+            outString += itemStatus + item.ID() + "\t - " + timeString + "/" + item.maxHealth + "\n";
         }
         text.text = outString;
     }
