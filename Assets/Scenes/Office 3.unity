@@ -193,7 +193,7 @@ PrefabInstance:
         type: 3}
       propertyPath: inputPanel
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1713329612}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea69bc2980341b043a91f7915d92752b, type: 3}
 --- !u!1001 &11677573
@@ -7139,6 +7139,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8280ae56cb1250f44b94a498be96f249, type: 3}
+--- !u!114 &1713329612 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4436325074829747218, guid: 8280ae56cb1250f44b94a498be96f249,
+    type: 3}
+  m_PrefabInstance: {fileID: 1713329611}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d55fcb552f8f7e14faa121321efa42b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1720807996
 PrefabInstance:
   m_ObjectHideFlags: 0
