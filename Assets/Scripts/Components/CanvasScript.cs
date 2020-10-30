@@ -11,6 +11,7 @@ public class CanvasScript : MonoBehaviour
     public GachaPanel gachaPanel;
     public CommandsPanel commandsPanel;
     public StationsPanel stationsPanel;
+    public GameOverTimer gameOverTimer;
 
     private void Awake()
     {

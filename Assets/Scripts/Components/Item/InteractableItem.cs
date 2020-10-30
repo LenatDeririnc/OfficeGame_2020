@@ -70,9 +70,11 @@ public class InteractableItem : Item
                 break;
             case float h when (0 < h && h <= m_redZone):
                 CurrentStatus = StationStatus.Bad;
+                CanvasScript.current.gameOverTimer.StartTimer(this);
                 break;
             case float h when (h == 0):
                 CurrentStatus = StationStatus.Died;
+                CanvasScript.current.gameOverTimer.StartTimer(this);
                 break;
         }
     }
@@ -103,6 +105,7 @@ public class InteractableItem : Item
     public override void Interact()
     {
         m_health = maxHealth;
+        CanvasScript.current.gameOverTimer.StopTimer(this);
     }
 
     private IEnumerator HealthDegreaseCoroutine()
