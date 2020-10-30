@@ -1,0 +1,193 @@
+fileFormatVersion: 2
+guid: 9268030781f264f49a021553f44d01ce
+ModelImporter:
+  serializedVersion: 19301
+  internalIDToNameTable:
+  - first:
+      74: 8064385163906367834
+    second: door_server|Cylinder.001Action
+  - first:
+      74: 8283187098911615476
+    second: door_server|Cylinder.001Action.001
+  - first:
+      74: -3037054642919454328
+    second: door_server|Cylinder.001Action.002
+  - first:
+      74: 5353275064518156666
+    second: door_server|Cylinder.002Action
+  - first:
+      74: -3907614504810276861
+    second: door_server|Cylinder.002Action.001
+  - first:
+      74: -6200652439847018417
+    second: door_server|Cylinder.002Action.002
+  - first:
+      74: 5646242883580046960
+    second: door_server|Cylinder.003Action
+  - first:
+      74: 2031924046767309731
+    second: door_server|door.002Action
+  - first:
+      74: -2303261314166141918
+    second: door_server|door.002Action.001
+  - first:
+      74: -3310786955081257168
+    second: door_server|door.002Action.002
+  - first:
+      74: 1458915692755712388
+    second: door_server|door_serverAction
+  - first:
+      74: -5076694252143415
+    second: door_server|floor.003Action
+  - first:
+      74: -3345070291466950549
+    second: door_server|floor.003Action.001
+  - first:
+      74: 6668723707313057108
+    second: door_server|floor.003Action.002
+  - first:
+      74: 7349897488468035230
+    second: door_server|handleAction
+  - first:
+      74: 1867542660304157851
+    second: door_server|printer_animation|printer_animation|printer_animationAction.001
+  - first:
+      74: -6460452384805391178
+    second: Cylinder.003|Cylinder.001Action
+  - first:
+      74: -6264086052232557698
+    second: Cylinder.003|Cylinder.001Action.001
+  - first:
+      74: -7778527788202588726
+    second: Cylinder.003|Cylinder.001Action.002
+  - first:
+      74: 3699463518991864318
+    second: Cylinder.003|Cylinder.002Action
+  - first:
+      74: -7579257255991434205
+    second: Cylinder.003|Cylinder.002Action.001
+  - first:
+      74: 8633508300166330344
+    second: Cylinder.003|Cylinder.002Action.002
+  - first:
+      74: -5793013652114006676
+    second: Cylinder.003|Cylinder.003Action
+  - first:
+      74: -7873592622826216882
+    second: Cylinder.003|door.002Action
+  - first:
+      74: 6157443938391867359
+    second: Cylinder.003|door.002Action.001
+  - first:
+      74: 1405302938926861295
+    second: Cylinder.003|door.002Action.002
+  - first:
+      74: 4238998384989132548
+    second: Cylinder.003|door_serverAction
+  - first:
+      74: 2011263164215612262
+    second: Cylinder.003|floor.003Action
+  - first:
+      74: -1942448363394354983
+    second: Cylinder.003|floor.003Action.001
+  - first:
+      74: 9027995947214796141
+    second: Cylinder.003|floor.003Action.002
+  - first:
+      74: 2061945340790970285
+    second: Cylinder.003|handleAction
+  - first:
+      74: 8893595860002298557
+    second: Cylinder.003|printer_animation|printer_animation|printer_animationAction.001
+  externalObjects: {}
+  materials:
+    materialImportMode: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
