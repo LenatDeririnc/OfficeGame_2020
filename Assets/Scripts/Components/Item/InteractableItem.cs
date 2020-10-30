@@ -63,16 +63,20 @@ public class InteractableItem : Item
         {
             default:
                 CurrentStatus = StationStatus.Great;
+                CanvasScript.current.winPanel.AppendGoodSector(this);
                 break;
             case float h when (m_redZone < h && h <= m_greenZone):
                 CurrentStatus = StationStatus.Ok;
+                CanvasScript.current.winPanel.RemoveGoodSector(this);
                 break;
             case float h when (0 < h && h <= m_redZone):
                 CurrentStatus = StationStatus.Bad;
+                CanvasScript.current.winPanel.RemoveGoodSector(this);
                 CanvasScript.current.gameOverTimer.StartTimer(this);
                 break;
             case float h when (h == 0):
                 CurrentStatus = StationStatus.Died;
+                CanvasScript.current.winPanel.RemoveGoodSector(this);
                 CanvasScript.current.gameOverTimer.StartTimer(this);
                 break;
         }
@@ -97,8 +101,12 @@ public class InteractableItem : Item
 
     private void Start()
     {
-        m_health = m_maxHealth;
         StartCoroutine(DegreseHealth);
+    }
+
+    public void StopTimer()
+    {
+        StopCoroutine(DegreseHealth);
     }
 
     public override void Interact()

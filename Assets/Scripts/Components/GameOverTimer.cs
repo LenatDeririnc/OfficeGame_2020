@@ -6,7 +6,7 @@ using TMPro;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
 
-public class GameOverTimer : MonoBehaviour
+public class GameOverTimer : MonoBehaviour, IInit
 {
     #region init
 
@@ -18,7 +18,7 @@ public class GameOverTimer : MonoBehaviour
     private bool isStarted = false;
     private List<InteractableItem> badSectors;
 
-    private void Awake()
+    public void INIT()
     {
         _gameObject = gameObject;
         badSectors = new List<InteractableItem>();
@@ -26,7 +26,12 @@ public class GameOverTimer : MonoBehaviour
         currentTimer = timerTick();
         _gameObject.SetActive(false);
     }
-    
+
+    private void Awake()
+    {
+        INIT();
+    }
+
     #endregion
 
     #region parameters
@@ -72,7 +77,7 @@ public class GameOverTimer : MonoBehaviour
             timer = timer - 1;
             if (timer < 0)
             {
-                Debug.Log("GAME OVER");
+                CanvasScript.current.gameOverPanel.Raise();
                 break;
             }
         }

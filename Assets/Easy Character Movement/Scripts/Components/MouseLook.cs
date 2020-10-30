@@ -268,7 +268,7 @@ namespace ECM.Components
                 InternalLockUpdate();
         }
 
-        protected void UnlockCursor(InputAction.CallbackContext context)
+        public void UnlockCursor()
         {
             _isCursorLocked = !_isCursorLocked;
         }
@@ -289,7 +289,7 @@ namespace ECM.Components
 
         protected virtual void Awake()
         {
-            BaseInputManager.Develop.UnlockCursorKey.performed += context => UnlockCursor(context);
+            BaseInputManager.Develop.UnlockCursorKey.performed += context => UnlockCursor();
 
             BaseInputManager.PlayerMovement.ViewHorizontal.performed += context => HorizontalVelocity(context);
             BaseInputManager.PlayerMovement.ViewHorizontal.canceled += context => HorizontalVelocity(context);

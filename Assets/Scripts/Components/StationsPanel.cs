@@ -15,7 +15,7 @@ public class StationsPanel : MonoBehaviour
     private InteractableItem[] items;
     private Dictionary<StationStatus, string> colorStatus;
 
-    private void createColors()
+    private void initColors()
     {
         colorStatus = new Dictionary<StationStatus, string>();
         colorStatus.Add(StationStatus.Great, "<color=\"green\">");
@@ -26,7 +26,7 @@ public class StationsPanel : MonoBehaviour
     
     private void Awake()
     {
-        createColors();
+        initColors();
         text = GetComponentInChildren<TMP_Text>();
         text.text = "";
         items = FindObjectsOfType<InteractableItem>();

@@ -12,6 +12,8 @@ public class CanvasScript : MonoBehaviour
     public CommandsPanel commandsPanel;
     public StationsPanel stationsPanel;
     public GameOverTimer gameOverTimer;
+    public GameOverPanel gameOverPanel;
+    public WinPanel winPanel;
 
     private void Awake()
     {
