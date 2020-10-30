@@ -13,9 +13,20 @@ public class StationsPanel : MonoBehaviour
     private TMP_Text text;
     private string currentText;
     private InteractableItem[] items;
+    private Dictionary<StationStatus, string> colorStatus;
 
+    private void createColors()
+    {
+        colorStatus = new Dictionary<StationStatus, string>();
+        colorStatus.Add(StationStatus.Great, "<color=\"green\">");
+        colorStatus.Add(StationStatus.Ok, "<color=#FFCC67>");
+        colorStatus.Add(StationStatus.Bad, "<color=\"red\">");
+        colorStatus.Add(StationStatus.Died, "<color=\"black\">");
+    }
+    
     private void Awake()
     {
+        createColors();
         text = GetComponentInChildren<TMP_Text>();
         text.text = "";
         items = FindObjectsOfType<InteractableItem>();
@@ -28,7 +39,8 @@ public class StationsPanel : MonoBehaviour
 
         foreach (InteractableItem item in items)
         {
-            outString += item.ID() + " - " + item.health + "/" + item.maxHealth + "\n";
+            var itemStatus = colorStatus[item.CurrentStatus];
+            outString += itemStatus + item.ID() + " - " + item.health + "/" + item.maxHealth + "\n";
         }
         text.text = outString;
     }
