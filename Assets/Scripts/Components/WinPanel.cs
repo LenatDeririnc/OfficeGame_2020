@@ -25,16 +25,16 @@ public class WinPanel : MonoBehaviour, IInit
 
     public void AppendGoodSector(InteractableItem item)
     {
-        if (_goodSectors.Contains(item)) return;
-        _goodSectors.Add(item);
-        if ((_goodSectors.Count) == _items.Length)
-        {
-            foreach (InteractableItem currentItem in _items)
-            {
-                currentItem.StopTimer();
-            }
-            _gameOver.Raise();
-        }
+        // if (_goodSectors.Contains(item)) return;
+        // _goodSectors.Add(item);
+        // if ((_goodSectors.Count) == _items.Length)
+        // {
+        //     foreach (InteractableItem currentItem in _items)
+        //     {
+        //         currentItem.StopTimer();
+        //     }
+        //     _gameOver.Raise();
+        // }
     }
     
     public void RemoveGoodSector(InteractableItem item)

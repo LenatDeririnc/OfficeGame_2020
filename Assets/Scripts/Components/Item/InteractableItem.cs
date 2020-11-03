@@ -12,6 +12,7 @@ public class InteractableItem : Item
     private GameObject m_gameObject;
     private IEnumerator DegreseHealth;
     private bool m_isActive;
+    [SerializeField] private bool m_isAvable = true;
     private StationStatus m_currentStatus;
 
     #endregion
@@ -19,7 +20,8 @@ public class InteractableItem : Item
     #region parameters
     
     [SerializeField] private string m_id = "";
-    [SerializeField] private float m_health;
+    private float m_health;
+    [SerializeField] private float startHealth = 600;
     [SerializeField] private float m_maxHealth = 100;
     [SerializeField] private float m_changeHealthSpeed = 1;
     [SerializeField] private float m_greenZone = 75;
@@ -34,10 +36,33 @@ public class InteractableItem : Item
     public string logMessage => m_logMessage;
     public string command => m_command.ToLower();
     public bool isActive => m_isActive;
+    public bool isAvable
+    {
+        get => m_isAvable;
+        set
+        {
+            if (value == m_isAvable) return;
+            m_isAvable = value;
+            if (m_isAvable == true)
+            {
+                ShowObject();
+            }
+            else
+            {
+                HideObject();
+            }
+        }
+    }
     public float health
     {
         get => m_health;
         set => m_health = Mathf.Clamp(value, 0, maxHealth);
+    }
+
+    public GameObject mGameObject
+    {
+        get => m_gameObject;
+        set => m_gameObject = value;
     }
 
     public StationStatus CurrentStatus
@@ -96,12 +121,14 @@ public class InteractableItem : Item
     private void Awake()
     {
         m_gameObject = gameObject;
+        m_health = startHealth;
         DegreseHealth = HealthDegreaseCoroutine();
     }
 
     private void Start()
     {
         StartCoroutine(DegreseHealth);
+        m_isAvable = true;
     }
 
     public void StopTimer()
@@ -109,10 +136,27 @@ public class InteractableItem : Item
         StopCoroutine(DegreseHealth);
     }
 
+    public void ShowObject()
+    {
+        mGameObject.SetActive(true);
+        StartCoroutine(DegreseHealth);
+        m_isAvable = true;
+        // Debug.Log("ShowObject: " + m_isAvable);
+    }
+    
+    public void HideObject()
+    {
+        StopCoroutine(DegreseHealth);
+        m_isAvable = false;
+        mGameObject.SetActive(false);
+        // Debug.Log("HideObject: " + m_isAvable);
+    }
+
     public override void Interact()
     {
-        m_health = maxHealth;
+        m_health = startHealth;
         CanvasScript.current.gameOverTimer.StopTimer(this);
+        GameManager.current.interactContainer.Next(this);
     }
 
     private IEnumerator HealthDegreaseCoroutine()

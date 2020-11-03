@@ -12,7 +12,8 @@ public class StationsPanel : MonoBehaviour
 {
     private TMP_Text text;
     private string currentText;
-    private InteractableItem[] items;
+    private InteractContainer _container;
+    [SerializeField] private List<InteractableItem> items;
     private Dictionary<StationStatus, string> colorStatus;
 
     private void initColors()
@@ -27,9 +28,15 @@ public class StationsPanel : MonoBehaviour
     private void Awake()
     {
         initColors();
+        _container = GameManager.current.interactContainer;
         text = GetComponentInChildren<TMP_Text>();
         text.text = "";
-        items = FindObjectsOfType<InteractableItem>();
+        updateItems();
+    }
+
+    public void updateItems()
+    {
+        items = _container.SelectedItems;
     }
 
     void updateValues()
@@ -37,8 +44,11 @@ public class StationsPanel : MonoBehaviour
         string outString = "Станции\n";
         outString += "-----------\n";
 
+        
         foreach (InteractableItem item in items)
         {
+            if (!item.isAvable) continue;
+            
             string itemStatus = colorStatus[item.CurrentStatus];
             string timeString = item.health > 0 ? string.Format("{0000, 3:###}", item.health) : "  0";
             
