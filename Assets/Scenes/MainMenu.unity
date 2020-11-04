@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 543831915}
   - component: {fileID: 543831914}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Start Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -204,7 +204,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 694245542}
-        m_MethodName: RestartLevel
+        m_MethodName: LoadLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -347,7 +347,7 @@ GameObject:
   - component: {fileID: 681855410}
   - component: {fileID: 681855409}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: Exit Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -493,6 +493,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c11614b1686169c49aa75d2876f0857c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactContainer: {fileID: 0}
 --- !u!4 &694245543
 Transform:
   m_ObjectHideFlags: 0
@@ -517,7 +518,7 @@ GameObject:
   m_Component:
   - component: {fileID: 782957850}
   m_Layer: 5
-  m_Name: GameObject
+  m_Name: Game Naming
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -822,7 +823,7 @@ GameObject:
   - component: {fileID: 1099341264}
   - component: {fileID: 1099341263}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

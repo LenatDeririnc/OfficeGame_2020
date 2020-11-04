@@ -1,10 +1,12 @@
-﻿using System.Linq;
+﻿using System.Collections;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager current;
+    private bool isLogicLoaded = false;
     public InteractContainer interactContainer;
     private Scene loadedLevel;
     
@@ -16,12 +18,19 @@ public class GameManager : MonoBehaviour
 
     public void RestartLevel()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.UnloadSceneAsync("Office Logic");
+        SceneManager.LoadSceneAsync("Office Logic", LoadSceneMode.Additive);
+    }
+
+    public void LoadLevel()
+    {
+        SceneManager.LoadScene(1, LoadSceneMode.Single);
+        SceneManager.LoadSceneAsync("Office Logic", LoadSceneMode.Additive);
     }
 
     public void GotoMainMenu()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(0, LoadSceneMode.Single);
     }
     
     public void Exit()

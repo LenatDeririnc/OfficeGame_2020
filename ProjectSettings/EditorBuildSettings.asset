@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: bb19c27357f72194b9ec68f2135a00d3
   - enabled: 1
-    path: Assets/Scenes/Office Current (1).unity
-    guid: 2b3a3ca33e21f624589b971f58fcc4af
+    path: Assets/Scenes/Level 1.unity
+    guid: cedd039a8593f7241aa4832fd5cf845c
+  - enabled: 1
+    path: Assets/Scenes/Office Logic.unity
+    guid: 1dad3376518dd85469881942e65acc74
   m_configObjects: {}
