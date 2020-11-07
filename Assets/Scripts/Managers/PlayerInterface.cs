@@ -82,7 +82,6 @@ public class PlayerInterface : MonoBehaviour, IInit
     {
         if (Item is null) return;
         Item.Interact();
-        Item = null;
     }
     
     RaycastHit raycastHit;

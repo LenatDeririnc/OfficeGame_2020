@@ -55,6 +55,7 @@ public class InteractPanelScript : MonoBehaviour, IInit
         if (item is null)
         {
             SetActive(false);
+            CanvasScript.current.interactProgressBar.StopProgress();
             return;
         }
 
