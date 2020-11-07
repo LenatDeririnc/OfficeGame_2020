@@ -10,6 +10,8 @@ public class InitSequence : MonoBehaviour, IInit
     [SerializeField] private GameManager _gameManager;
     [SerializeField] private GameEvents _gameEvents;
     [SerializeField] private BallsScripts _ballsScripts;
+    [SerializeField] private NotesScript _notesScript;
+    [SerializeField] private InteractItems _interactItems;
 
     private List<IInit> INIT_ORDER;
 
@@ -17,6 +19,8 @@ public class InitSequence : MonoBehaviour, IInit
     {
         INIT_ORDER = new List<IInit>();
         INIT_ORDER.Add(_ballsScripts);
+        INIT_ORDER.Add(_notesScript);
+        INIT_ORDER.Add(_interactItems);
         INIT_ORDER.Add(_gameManager);
         INIT_ORDER.Add(_canvasScript);
         INIT_ORDER.Add(_gameEvents);
