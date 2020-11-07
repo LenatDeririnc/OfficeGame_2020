@@ -5,7 +5,7 @@ using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class InteractContainer : MonoBehaviour
+public class InteractContainer : MonoBehaviour, IInit
 {
     private InteractableItem[] items;
     private List<InteractableItem> selectedItems;
@@ -14,16 +14,20 @@ public class InteractContainer : MonoBehaviour
     public List<InteractableItem> SelectedItems => selectedItems;
     public List<InteractableItem> OtherItems => otherItems;
 
-    private void Awake()
+    public void INIT()
     {
-        items = FindObjectsOfType<InteractableItem>();
         selectedItems = new List<InteractableItem>();
         otherItems = new List<InteractableItem>();
-        foreach (InteractableItem item in items)
-        {
-            item.HideObject();
-        }
+    }
 
+    public void GET()
+    {
+        //TODO: Заменить
+        items = FindObjectsOfType<InteractableItem>();
+    }
+
+    public void AFTER_INIT()
+    {
         for (int i = 0; i < items.Length; i++)
         {
             var temp = items[i];

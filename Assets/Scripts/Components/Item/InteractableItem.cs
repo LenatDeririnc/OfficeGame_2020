@@ -6,14 +6,15 @@ using UnityEngine;
 using UnityEngine.PlayerLoop;
 using Debug = UnityEngine.Debug;
 
-public class InteractableItem : Item
+public class InteractableItem : Item, IInit
 {
     #region init
     private GameObject m_gameObject;
     private IEnumerator DegreseHealth;
-    private bool m_isActive;
+    private bool m_isAwableForTerminal;
     [SerializeField] private bool m_isAvable = true;
     private StationStatus m_currentStatus;
+    private IEnumerator m_interactCorutine;
 
     #endregion
 
@@ -28,6 +29,7 @@ public class InteractableItem : Item
     [SerializeField] private float m_redZone = 25;
     [SerializeField] private string m_command = "";
     [SerializeField] private string m_logMessage;
+    [SerializeField] public float m_interactSpeed = 1f;
 
     #endregion
 
@@ -35,7 +37,7 @@ public class InteractableItem : Item
     public override string ID() => m_id;
     public string logMessage => m_logMessage;
     public string command => m_command.ToLower();
-    public bool isActive => m_isActive;
+    public bool isAwableForTerminal => m_isAwableForTerminal;
     public bool isAvable
     {
         get => m_isAvable;
@@ -53,16 +55,11 @@ public class InteractableItem : Item
             }
         }
     }
+
     public float health
     {
         get => m_health;
         set => m_health = Mathf.Clamp(value, 0, maxHealth);
-    }
-
-    public GameObject mGameObject
-    {
-        get => m_gameObject;
-        set => m_gameObject = value;
     }
 
     public StationStatus CurrentStatus
@@ -76,11 +73,33 @@ public class InteractableItem : Item
     }
 
     public float maxHealth => m_maxHealth;
+
     public override string InteractName() => "Использовать";
+
     public Action InteractWithCommand() => CommandInteract;
+
     #endregion
 
     #region logic
+
+    public void INIT()
+    {
+        m_gameObject = gameObject;
+        DegreseHealth = HealthDegreaseCoroutine();
+        StartCoroutine(DegreseHealth);
+    }
+
+    public void GET()
+    {
+        // throw new NotImplementedException();
+    }
+
+    public void AFTER_INIT()
+    {
+        m_health = startHealth;
+        m_isAvable = true;
+        HideObject();
+    }
 
     public void setCurrentStatus()
     {
@@ -107,28 +126,15 @@ public class InteractableItem : Item
         }
     }
 
-    public void setActive()
+    public void setAwableForTerminal()
     {
-        m_isActive = true;
+        m_isAwableForTerminal = true;
     }
 
     private void CommandInteract()
     {
-        if (m_isActive)
+        if (m_isAwableForTerminal)
             Interact();
-    }
-
-    private void Awake()
-    {
-        m_gameObject = gameObject;
-        m_health = startHealth;
-        DegreseHealth = HealthDegreaseCoroutine();
-    }
-
-    private void Start()
-    {
-        StartCoroutine(DegreseHealth);
-        m_isAvable = true;
     }
 
     public void StopTimer()
@@ -138,21 +144,29 @@ public class InteractableItem : Item
 
     public void ShowObject()
     {
-        mGameObject.SetActive(true);
+        m_gameObject.SetActive(true);
         StartCoroutine(DegreseHealth);
         m_isAvable = true;
-        // Debug.Log("ShowObject: " + m_isAvable);
     }
-    
+
     public void HideObject()
     {
         StopCoroutine(DegreseHealth);
         m_isAvable = false;
-        mGameObject.SetActive(false);
-        // Debug.Log("HideObject: " + m_isAvable);
+        m_gameObject.SetActive(false);
+    }
+
+    public void SendInteractSignal()
+    {
+        CanvasScript.current.interactProgressBar.StartProgress(this);
     }
 
     public override void Interact()
+    {
+        SendInteractSignal();
+    }
+
+    public void InteractActions()
     {
         m_health = startHealth;
         CanvasScript.current.gameOverTimer.StopTimer(this);
@@ -167,7 +181,7 @@ public class InteractableItem : Item
             yield return new WaitForSeconds(0.1f);
         }
     }
-    
+
 
     public void SetCoroutineStatus(bool status)
     {
@@ -183,7 +197,7 @@ public class InteractableItem : Item
     {
         setCurrentStatus();
     }
-    
+
     #endregion
 }
 

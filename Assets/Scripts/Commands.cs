@@ -5,7 +5,7 @@ using JetBrains.Annotations;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
 
-public class Commands : MonoBehaviour
+public class Commands : MonoBehaviour, IInit
 {
     private InteractableItem[] items;
     
@@ -13,14 +13,19 @@ public class Commands : MonoBehaviour
     private Dictionary<string, InteractableItem> CommandLibary;
     public InputPanelScript inputPanel;
 
-    public void Awake()
+    public void INIT()
     {
         current = this;
-        items = GameObject.FindObjectsOfType<InteractableItem>();
         CommandLibary = new Dictionary<string, InteractableItem>();
     }
 
-    private void Start()
+    public void GET()
+    {
+        //TODO: заменить
+        items = FindObjectsOfType<InteractableItem>();
+    }
+
+    public void AFTER_INIT()
     {
         foreach (InteractableItem item in items)
         {
@@ -47,7 +52,7 @@ public class Commands : MonoBehaviour
         {
             InteractableItem current = CommandLibary[newArgs];
 
-            bool isActive = current.isActive;
+            bool isActive = current.isAwableForTerminal;
             string command = current.command;
             string logMessage = current.logMessage;
             Action action = current.InteractWithCommand();

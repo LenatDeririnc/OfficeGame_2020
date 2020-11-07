@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class CommandsPanel : MonoBehaviour
+public class CommandsPanel : MonoBehaviour, IInit
 {
     #region init
 
@@ -12,17 +12,26 @@ public class CommandsPanel : MonoBehaviour
     private TMP_Text text;
     private int itemsCount;
 
-    #endregion
-
-    #region logic
-
-    private void Awake()
+    public void INIT()
     {
         _gameObject = gameObject;
         text = GetComponentInChildren<TMP_Text>();
+    }
+
+    public void GET()
+    {
+        // throw new NotImplementedException();
+    }
+
+    public void AFTER_INIT()
+    {
         itemsCount = 0;
         SetActive(false);
     }
+
+    #endregion
+
+    #region logic
 
     public void addCommand(string str)
     {

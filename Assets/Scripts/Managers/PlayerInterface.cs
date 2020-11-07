@@ -6,15 +6,14 @@ using UnityEngine.InputSystem;
 using UnityEngine.PlayerLoop;
 using UnityEngine.UI;
 
-public class PlayerInterface : MonoBehaviour
+public class PlayerInterface : MonoBehaviour, IInit
 {
     public static PlayerInterface current;
-    private Transform m_transform;
     private Transform m_camera;
     private Item m_item;
     public bool _showInteract = true;
-    [SerializeField] private InputPanelScript inputPanelScript;
-    [SerializeField] private InteractPanelScript interactPanel;
+    private InputPanelScript inputPanelScript;
+    private InteractPanelScript interactPanel;
 
     public Item Item
     {
@@ -42,15 +41,24 @@ public class PlayerInterface : MonoBehaviour
 
     public delegate void OnItemChangedDelegate();
     public event OnItemChangedDelegate OnItemChanged;
-    
 
-    private void INIT()
+
+    public void INIT()
     {
         current = this;
-        m_transform = transform;
         m_camera = transform.GetComponentInChildren<Camera>().transform;
+    }
+
+    public void GET()
+    {
         interactPanel = CanvasScript.current.interactPanel;
         inputPanelScript = CanvasScript.current.inputPanel;
+    }
+
+    public void AFTER_INIT()
+    {
+        INPUTS();
+        EVENTS();
     }
 
     private void INPUTS()
@@ -63,13 +71,6 @@ public class PlayerInterface : MonoBehaviour
     private void EVENTS()
     {
         OnItemChanged += ShowInteract;
-    }
-
-    private void Awake()
-    {
-        INIT();
-        INPUTS();
-        EVENTS();
     }
 
     private void ShowInteract()

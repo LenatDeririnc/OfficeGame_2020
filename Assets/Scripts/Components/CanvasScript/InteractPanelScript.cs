@@ -3,8 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class InteractPanelScript : MonoBehaviour
+public class InteractPanelScript : MonoBehaviour, IInit
 {
     private TMP_Text text;
     private string m_captureName = "";
@@ -23,6 +24,22 @@ public class InteractPanelScript : MonoBehaviour
     
     private event Action OnCaptureChanged;
 
+    public void INIT()
+    {
+        OnCaptureChanged += ChangeCaptureName;
+        text = GetComponentInChildren<TMP_Text>();
+    }
+
+    public void GET()
+    {
+        // throw new NotImplementedException();
+    }
+
+    public void AFTER_INIT()
+    {
+        SetActive(false);
+    }
+
     private void ChangeCaptureName()
     {
         text.text = "{\"F\": \"" + CaptureName + "\"}";
@@ -32,7 +49,7 @@ public class InteractPanelScript : MonoBehaviour
     {
         gameObject.SetActive(state);
     }
-    
+
     public void ShowInteract(Item item)
     {
         if (item is null)
@@ -43,13 +60,5 @@ public class InteractPanelScript : MonoBehaviour
 
         CaptureName = item.InteractName();
         SetActive(true);
-    }
-
-    private void Awake()
-    {
-        text = GetComponentInChildren<TMP_Text>();
-        OnCaptureChanged += ChangeCaptureName;
-        ChangeCaptureName();
-        SetActive(false);
     }
 }

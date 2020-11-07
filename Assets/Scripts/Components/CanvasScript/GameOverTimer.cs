@@ -22,14 +22,18 @@ public class GameOverTimer : MonoBehaviour, IInit
     {
         _gameObject = gameObject;
         badSectors = new List<InteractableItem>();
-        currentTMPText = GetComponentInChildren<TMP_Text>();
         currentTimer = timerTick();
-        _gameObject.SetActive(false);
+        currentTMPText = GetComponentInChildren<TMP_Text>();
     }
 
-    private void Awake()
+    public void GET()
     {
-        INIT();
+        // throw new NotImplementedException();
+    }
+
+    public void AFTER_INIT()
+    {
+        _gameObject.SetActive(false);
     }
 
     #endregion

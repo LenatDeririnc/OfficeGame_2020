@@ -1,28 +1,34 @@
 ﻿using UnityEngine;
 using TMPro;
 
-public class InputPanelScript : MonoBehaviour
+public class InputPanelScript : MonoBehaviour, IInit
 {
     #region INIT
-    
+
+    private GameObject _gameObject;
     public bool CommandModeActivated = false;
     public TMP_Text logField;
     public TMP_InputField inputField;
 
-    private void INIT()
+    public void INIT()
     {
-        gameObject.SetActive(CommandModeActivated);
+        _gameObject = gameObject;
+        _typingLog = logField.text;
     }
 
-    private void Awake()
+    public void GET()
     {
-        INIT();
-        _typingLog = logField.text;
+        // throw new System.NotImplementedException();
+    }
+
+    public void AFTER_INIT()
+    {
+        SetActive(CommandModeActivated);
     }
 
     public void SetActive(bool state)
     {
-        gameObject.SetActive(state);
+        _gameObject.SetActive(state);
     }
 
     #endregion
@@ -49,7 +55,7 @@ public class InputPanelScript : MonoBehaviour
         BaseInputManager.Interface.Disable();
         BaseInputManager.CommandMode.Enable();
         PlayerInterface.current.showInteract = false;
-        gameObject.SetActive(true);
+        SetActive(true);
         inputField.ActivateInputField();
         CanvasScript.current.commandsPanel.SetActive(true);
     }
@@ -60,7 +66,7 @@ public class InputPanelScript : MonoBehaviour
         BaseInputManager.Interface.Enable();
         BaseInputManager.CommandMode.Disable();
         PlayerInterface.current.showInteract = true;
-        gameObject.SetActive(false);
+        SetActive(false);
         clearTypeLine();
         CanvasScript.current.commandsPanel.SetActive(false);
     }

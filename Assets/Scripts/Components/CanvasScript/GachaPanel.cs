@@ -3,7 +3,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 
-public class GachaPanel : MonoBehaviour
+public class GachaPanel : MonoBehaviour, IInit
 {
     private IEnumerator currentCoroutine;
     [SerializeField] private TMP_Text commandLabel;
@@ -23,13 +23,22 @@ public class GachaPanel : MonoBehaviour
 
     private event Action onCommandChanged;
 
-    private void Awake()
+    public void INIT()
     {
         onCommandChanged += ChangeCommand;
-        gameObject.SetActive(false);
         currentCoroutine = ShowMessege();
     }
-    
+
+    public void GET()
+    {
+        // throw new NotImplementedException();
+    }
+
+    public void AFTER_INIT()
+    {
+        gameObject.SetActive(false);
+    }
+
     void ChangeCommand()
     {
         terminated = true;

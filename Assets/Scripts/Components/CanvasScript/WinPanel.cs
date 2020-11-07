@@ -7,20 +7,27 @@ using Debug = UnityEngine.Debug;
 
 public class WinPanel : MonoBehaviour, IInit
 {
+    private GameObject _gameObject;
     private InteractableItem[] _items;
     private GameOverPanel _gameOver;
     private List<InteractableItem> _goodSectors;
 
-    private void Awake()
-    {
-        INIT();
-    }
-    
     public void INIT()
     {
-        _gameOver = GetComponent<GameOverPanel>();
-        _items = FindObjectsOfType<InteractableItem>();
+        _gameObject = gameObject;
         _goodSectors = new List<InteractableItem>();
+    }
+
+    public void GET()
+    {
+        _gameOver = GetComponent<GameOverPanel>();
+        //TODO: заменить
+        _items = FindObjectsOfType<InteractableItem>();
+    }
+
+    public void AFTER_INIT()
+    {
+        _gameObject.SetActive(false);
     }
 
     public void AppendGoodSector(InteractableItem item)

@@ -16,7 +16,7 @@ public class NoteItem : Item
     {
         CanvasScript.current.gachaPanel.commandName = objectAccess.command;
         CanvasScript.current.commandsPanel.addCommand(objectAccess.command);
-        objectAccess.setActive();
+        objectAccess.setAwableForTerminal();
         gameObject.SetActive(false);
     }
 }
