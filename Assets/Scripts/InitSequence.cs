@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 
 public class InitSequence : MonoBehaviour, IInit
 {
+    public static InitSequence current;
     [SerializeField] private CanvasScript _canvasScript;
     [SerializeField] private GameManager _gameManager;
     [SerializeField] private GameEvents _gameEvents;
@@ -28,6 +29,7 @@ public class InitSequence : MonoBehaviour, IInit
     
     public void INIT()
     {
+        current = this;
         FILL_INIT_ORDER();
         foreach (var initElement in INIT_ORDER)
         {

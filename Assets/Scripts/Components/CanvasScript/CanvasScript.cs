@@ -15,6 +15,7 @@ public class CanvasScript : MonoBehaviour, IInit
     public GameOverPanel gameOverPanel;
     public WinPanel winPanel;
     public InteractProgressBar interactProgressBar;
+    public StressLevel stressLevel;
 
     private List<IInit> INIT_ORDER;
 
@@ -24,6 +25,7 @@ public class CanvasScript : MonoBehaviour, IInit
         INIT_ORDER.Add(inputPanel);
         INIT_ORDER.Add(interactPanel);
         INIT_ORDER.Add(gachaPanel);
+        INIT_ORDER.Add(stressLevel);
         INIT_ORDER.Add(commandsPanel);
         INIT_ORDER.Add(stationsPanel);
         INIT_ORDER.Add(gameOverTimer);

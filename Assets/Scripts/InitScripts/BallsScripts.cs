@@ -8,6 +8,8 @@ public class BallsScripts : MonoBehaviour, IInit
     public static BallsScripts current;
     private InteractableItem[] balls;
 
+    public InteractableItem[] Balls => balls;
+
     public void INIT()
     {
         current = this;

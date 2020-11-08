@@ -13,6 +13,21 @@ public class InteractContainer : MonoBehaviour, IInit
 
     public List<InteractableItem> SelectedItems => selectedItems;
     public List<InteractableItem> OtherItems => otherItems;
+    
+    private InteractableItem OtherItems_Pop()
+    {
+        InteractableItem temp = otherItems[0];
+        otherItems.Remove(temp);
+        for (int i = 0; i < otherItems.Count; i++)
+        {
+            int randindex = Random.Range(0, otherItems.Count);
+            
+            InteractableItem sorttemp = otherItems[i];
+            otherItems[i] = otherItems[randindex];
+            otherItems[randindex] = sorttemp;
+        }
+        return temp;
+    }
 
     public void INIT()
     {
@@ -22,11 +37,10 @@ public class InteractContainer : MonoBehaviour, IInit
 
     public void GET()
     {
-        //TODO: Заменить
-        items = FindObjectsOfType<InteractableItem>();
+        items = BallsScripts.current.Balls;
     }
 
-    public void AFTER_INIT()
+    private void RefreshItemsOrder()
     {
         for (int i = 0; i < items.Length; i++)
         {
@@ -35,7 +49,10 @@ public class InteractContainer : MonoBehaviour, IInit
             items[i] = items[select];
             items[select] = temp;
         }
+    }
 
+    private void SelectItems()
+    {
         for (int i = 0; i < items.Length; i++)
         {
             if (i < 6)
@@ -50,29 +67,20 @@ public class InteractContainer : MonoBehaviour, IInit
         }
     }
 
-    private InteractableItem otherItemPop()
+    public void AFTER_INIT()
     {
-        InteractableItem temp = otherItems[0];
-        otherItems.Remove(temp);
-        for (int i = 0; i < otherItems.Count; i++)
-        {
-            var randindex = Random.Range(0, otherItems.Count);
-            
-            var sorttemp = otherItems[i];
-            otherItems[i] = otherItems[randindex];
-            otherItems[randindex] = sorttemp;
-        }
-        return temp;
+        RefreshItemsOrder();
+        SelectItems();
     }
 
     public void Next(InteractableItem previousItem)
     {
         CanvasScript.current.stationsPanel.updateItems();
-        
+
         previousItem.isAvable = false;
         selectedItems.Remove(previousItem);
 
-        InteractableItem nextItem = otherItemPop();
+        InteractableItem nextItem = OtherItems_Pop();
         selectedItems.Add(nextItem);
         otherItems.Add(previousItem);
         nextItem.isAvable = true;

@@ -101,27 +101,30 @@ public class InteractableItem : Item, IInit
         HideObject();
     }
 
+    void OnStationStatusChanged()
+    {
+        CanvasScript.current.stressLevel.CheckCurrentBalls();
+    }
+    
     public void setCurrentStatus()
     {
         switch (health)
         {
             default:
                 CurrentStatus = StationStatus.Great;
-                CanvasScript.current.winPanel.AppendGoodSector(this);
+                OnStationStatusChanged();
                 break;
             case float h when (m_redZone < h && h <= m_greenZone):
                 CurrentStatus = StationStatus.Ok;
-                CanvasScript.current.winPanel.RemoveGoodSector(this);
+                OnStationStatusChanged();
                 break;
             case float h when (0 < h && h <= m_redZone):
                 CurrentStatus = StationStatus.Bad;
-                CanvasScript.current.winPanel.RemoveGoodSector(this);
-                CanvasScript.current.gameOverTimer.StartTimer(this);
+                OnStationStatusChanged();
                 break;
             case float h when (h == 0):
                 CurrentStatus = StationStatus.Died;
-                CanvasScript.current.winPanel.RemoveGoodSector(this);
-                CanvasScript.current.gameOverTimer.StartTimer(this);
+                OnStationStatusChanged();
                 break;
         }
     }
@@ -134,7 +137,7 @@ public class InteractableItem : Item, IInit
     private void CommandInteract()
     {
         if (m_isAwableForTerminal)
-            Interact();
+            InteractActions();
     }
 
     public void StopTimer()
@@ -169,7 +172,6 @@ public class InteractableItem : Item, IInit
     public void InteractActions()
     {
         m_health = startHealth;
-        CanvasScript.current.gameOverTimer.StopTimer(this);
         GameManager.current.interactContainer.Next(this);
     }
 
@@ -177,8 +179,8 @@ public class InteractableItem : Item, IInit
     {
         while (true)
         {
-            health -= m_changeHealthSpeed;
-            yield return new WaitForSeconds(0.1f);
+            health -= m_changeHealthSpeed * Time.deltaTime;
+            yield return null;
         }
     }
 
