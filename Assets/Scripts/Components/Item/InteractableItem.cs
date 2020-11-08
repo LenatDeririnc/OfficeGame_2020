@@ -15,6 +15,7 @@ public class InteractableItem : Item, IInit
     [SerializeField] private bool m_isAvable = true;
     private StationStatus m_currentStatus;
     private IEnumerator m_interactCorutine;
+    private bool isInited = false;
 
     #endregion
 
@@ -98,13 +99,14 @@ public class InteractableItem : Item, IInit
     {
         m_health = startHealth;
         m_isAvable = true;
-        StartCoroutine(UpdateMethod());
+        isInited = true;
         HideObject();
     }
 
     void OnStationStatusChanged()
     {
         CanvasScript.current.stressLevel.CheckCurrentBalls();
+        CanvasScript.current.stationsPanel.updateItems();
     }
     
     public void setCurrentStatus()
@@ -196,12 +198,11 @@ public class InteractableItem : Item, IInit
         StopCoroutine(DegreseHealth);
     }
 
-    private IEnumerator UpdateMethod()
+    private void Update()
     {
-        while (true)
+        if (isInited)
         {
             setCurrentStatus();
-            yield return null;
         }
     }
 
