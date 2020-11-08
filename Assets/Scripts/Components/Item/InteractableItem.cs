@@ -4,33 +4,53 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
+using UnityEngine.UI;
 using Debug = UnityEngine.Debug;
 
 public class InteractableItem : Item, IInit
 {
     #region init
+    private bool m_isAvable = true;
     private GameObject m_gameObject;
     private IEnumerator DegreseHealth;
     private bool m_isAwableForTerminal;
-    [SerializeField] private bool m_isAvable = true;
     private StationStatus m_currentStatus;
     private IEnumerator m_interactCorutine;
     private bool isInited = false;
+    private float m_health;
+    private GameObject _smallDotGameObject;
+    private GameObject _bigDotGameObject;
+
 
     #endregion
 
     #region parameters
     
+    [SerializeField] private SpriteRenderer _smallDot;
+    [SerializeField] private SpriteRenderer _bigDot;
+    [Space] 
+    [SerializeField] private Color GreatColor;
+    [SerializeField] private Color OkColor;
+    [SerializeField] private Color BadColor;
+    [SerializeField] private Color DiedColor;
+    [Space]
     [SerializeField] private string m_id = "";
-    private float m_health;
+    [Space]
+    [SerializeField] public float m_interactSpeed = 1f;
+    [Space]
     [SerializeField] private float startHealth = 600;
     [SerializeField] private float m_maxHealth = 100;
     [SerializeField] private float m_changeHealthSpeed = 1;
+    [Space]
     [SerializeField] private float m_greenZone = 75;
     [SerializeField] private float m_redZone = 25;
+    [Space] 
+    [SerializeField] private float ok_flickiring_time = .5f;
+    [SerializeField] private float bad_flickiring_time = .25f;
+    [Space]
     [SerializeField] private string m_command = "";
-    [SerializeField] private string m_logMessage;
-    [SerializeField] public float m_interactSpeed = 1f;
+    [Space]
+    [SerializeField] [TextArea] private string m_logMessage;
 
     #endregion
 
@@ -70,6 +90,7 @@ public class InteractableItem : Item, IInit
         {
             if (m_currentStatus == value) return;
             m_currentStatus = value;
+            OnStationStatusChanged();
         }
     }
 
@@ -86,13 +107,15 @@ public class InteractableItem : Item, IInit
     public void INIT()
     {
         m_gameObject = gameObject;
+        _smallDotGameObject = _smallDot.gameObject;
+        _bigDotGameObject = _bigDot.gameObject;
         DegreseHealth = HealthDegreaseCoroutine();
         StartCoroutine(DegreseHealth);
     }
 
     public void GET()
     {
-        // throw new NotImplementedException();
+        
     }
 
     public void AFTER_INIT()
@@ -102,11 +125,60 @@ public class InteractableItem : Item, IInit
         isInited = true;
         HideObject();
     }
+    
+    private IEnumerator FlickiringVar;
+    IEnumerator Flickiring(float perSeconds)
+    {
+        while (true)
+        {
+            _bigDotGameObject.SetActive(true);
+            yield return new WaitForSeconds(perSeconds);
+            _bigDotGameObject.SetActive(false);
+            yield return new WaitForSeconds(perSeconds);
+        }
+    }
+
+    private void SetMinimapStatusDefaults(bool isSmallFirst, Color color, bool isFlickiring, float flickiringPerSeconds)
+    {
+        if (FlickiringVar != null) StopCoroutine(FlickiringVar);
+        _smallDot.color = color;
+        _bigDot.color = color;
+        if (!isFlickiring)
+        {
+            _smallDotGameObject.SetActive(isSmallFirst);
+            _bigDotGameObject.SetActive(!isSmallFirst);
+        }
+        else
+        {
+            FlickiringVar = Flickiring(flickiringPerSeconds);
+            StartCoroutine(FlickiringVar);
+        }
+    }
+
+    void SetMinimapStatus(StationStatus status)
+    {
+        switch (status)
+        {
+            default:
+                SetMinimapStatusDefaults(true, GreatColor, false, 0);
+                break;
+            case StationStatus.Ok:
+                SetMinimapStatusDefaults(true, OkColor, true, ok_flickiring_time);
+                break;
+            case StationStatus.Bad:
+                SetMinimapStatusDefaults(true, BadColor, true, bad_flickiring_time);
+                break;
+            case StationStatus.Died:
+                SetMinimapStatusDefaults(false, DiedColor, false, 0);
+                break;
+        }
+    }
 
     void OnStationStatusChanged()
     {
         CanvasScript.current.stressLevel.CheckCurrentBalls();
         CanvasScript.current.stationsPanel.updateItems();
+        SetMinimapStatus(CurrentStatus);
     }
     
     public void setCurrentStatus()
@@ -115,19 +187,15 @@ public class InteractableItem : Item, IInit
         {
             default:
                 CurrentStatus = StationStatus.Great;
-                OnStationStatusChanged();
                 break;
             case float h when (m_redZone < h && h <= m_greenZone):
                 CurrentStatus = StationStatus.Ok;
-                OnStationStatusChanged();
                 break;
             case float h when (0 < h && h <= m_redZone):
                 CurrentStatus = StationStatus.Bad;
-                OnStationStatusChanged();
                 break;
             case float h when (h == 0):
                 CurrentStatus = StationStatus.Died;
-                OnStationStatusChanged();
                 break;
         }
     }
