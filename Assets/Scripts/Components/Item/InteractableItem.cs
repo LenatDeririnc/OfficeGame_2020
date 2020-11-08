@@ -98,6 +98,7 @@ public class InteractableItem : Item, IInit
     {
         m_health = startHealth;
         m_isAvable = true;
+        StartCoroutine(UpdateMethod());
         HideObject();
     }
 
@@ -195,9 +196,13 @@ public class InteractableItem : Item, IInit
         StopCoroutine(DegreseHealth);
     }
 
-    private void Update()
+    private IEnumerator UpdateMethod()
     {
-        setCurrentStatus();
+        while (true)
+        {
+            setCurrentStatus();
+            yield return null;
+        }
     }
 
     #endregion
