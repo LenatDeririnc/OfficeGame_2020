@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<< HEAD:Assets/Scripts/Components/CanvasScript.meta
-guid: a7892e73fbdee9d45ba2703b6590b28c
-=======
 guid: fa8330b0b25379441ae0bcc3fd4e7b63
->>>>>>> 35e1d8e (changes):Assets/Models/2Wave.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
