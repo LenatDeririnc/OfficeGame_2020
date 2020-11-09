@@ -16,8 +16,7 @@ public class GameOverPanel : MonoBehaviour, IInit
 
     public void GET()
     {
-        // TODO: добавить здесь получение мауслука
-        // throw new NotImplementedException();
+        
     }
 
     public void AFTER_INIT()

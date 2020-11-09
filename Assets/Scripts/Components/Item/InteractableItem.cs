@@ -28,7 +28,7 @@ public class InteractableItem : Item, IInit
     
     [SerializeField] private SpriteRenderer _smallDot;
     [SerializeField] private SpriteRenderer _bigDot;
-    [Space] 
+    [Space]
     [SerializeField] private Color GreatColor;
     [SerializeField] private Color OkColor;
     [SerializeField] private Color BadColor;
@@ -40,7 +40,9 @@ public class InteractableItem : Item, IInit
     [Space]
     [SerializeField] private float startHealth = 600;
     [SerializeField] private float m_maxHealth = 100;
+    [SerializeField] private float m_repairHealth = 1000;
     [SerializeField] private float m_changeHealthSpeed = 1;
+
     [Space]
     [SerializeField] private float m_greenZone = 75;
     [SerializeField] private float m_redZone = 25;
@@ -176,9 +178,9 @@ public class InteractableItem : Item, IInit
 
     void OnStationStatusChanged()
     {
-        CanvasScript.current.stressLevel.CheckCurrentBalls();
-        CanvasScript.current.stationsPanel.updateItems();
         SetMinimapStatus(CurrentStatus);
+        CanvasScript.current.stressLevel.CheckCurrentBalls(this);
+        CanvasScript.current.stationsPanel.updateItems();
     }
     
     public void setCurrentStatus()
@@ -208,7 +210,7 @@ public class InteractableItem : Item, IInit
     private void CommandInteract()
     {
         if (m_isAwableForTerminal)
-            InteractActions();
+            InteractActions(true);
     }
 
     public void StopTimer()
@@ -240,9 +242,11 @@ public class InteractableItem : Item, IInit
         SendInteractSignal();
     }
 
-    public void InteractActions()
+    public void InteractActions(bool usedWithTerminal)
     {
-        m_health = startHealth;
+        m_health = m_repairHealth;
+        CanvasScript.current.stressLevel.PowerUpLevel(CurrentStatus, usedWithTerminal);
+        setCurrentStatus();
         GameManager.current.interactContainer.Next(this);
     }
 

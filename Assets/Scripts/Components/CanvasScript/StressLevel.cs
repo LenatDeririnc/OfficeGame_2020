@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Net.Mime;
+using System.Runtime.Remoting.Messaging;
 using UnityEngine;
 using UnityEngine.InputSystem.Controls;
 using UnityEngine.PlayerLoop;
@@ -9,7 +10,6 @@ using UnityEngine.UI;
 
 public class StressLevel : MonoBehaviour, IInit
 {
-    private RectTransform _rect;
     [SerializeField] private Image _line;
     [SerializeField] private Image _foregroundCircle;
     [SerializeField] private GameObject _greatSmile;
@@ -20,20 +20,31 @@ public class StressLevel : MonoBehaviour, IInit
     [Space]
     [SerializeField] private float startValue = .6f;
     [Space]
-    [SerializeField] private float greatZonesValue;
-    [SerializeField] private float okZonesValue;
-    [SerializeField] private float badZonesValue;
-    [SerializeField] private float diedZonesValue;
+    [SerializeField] private float greenZonesValue;
+    [SerializeField] private float yellowZonesValue;
+    [SerializeField] private float redZonesValue;
+    [SerializeField] private float blackZonesValue;
+    [Space] 
+    [SerializeField] private float greenZoneRepairValue;
+    [SerializeField] private float yellowZoneRepairValue;
+    [SerializeField] private float redZoneRepairValue;
+    [SerializeField] private float blackZoneRepairValue;
+    [SerializeField] private float terminalRepairValue;
     [Space]
     [SerializeField] private float _changeSpeed = 1;
+    private RectTransform _rect;
+    private float goodSector = 2f / 3f;
+    private float okSector = 1f / 3f;
     private float maxSize;
     private float minValue = .01f;
     private float _currentSize = 1;
     private IEnumerator stressChanger;
     private float _changeValue = 1;
     private InteractContainer _interactContainer;
-    private Dictionary<StationStatus, float> translator;
     private int currentFace;
+    private List<InteractableItem> yellowList;
+    private List<InteractableItem> redList;
+    private List<InteractableItem> blackList;
 
     private int CurrentFace
     {
@@ -48,8 +59,34 @@ public class StressLevel : MonoBehaviour, IInit
         }
     }
 
-    private float goodSector = 2f / 3f;
-    private float okSector = 1f / 3f;
+    public void AddToYellowList(InteractableItem item)
+    {
+        if (!yellowList.Contains(item))
+            yellowList.Add(item);
+    }
+
+    public void AddToRedList(InteractableItem item)
+    {
+        if (!redList.Contains(item))
+            redList.Add(item);
+    }
+    
+    public void AddToBlackList(InteractableItem item)
+    {
+        if (!blackList.Contains(item))
+            redList.Add(item);
+    }
+
+    public void RemoveFromAllLists(InteractableItem item)
+    {
+        if (yellowList.Contains(item))
+            yellowList.Remove(item);
+        if (redList.Contains(item))
+            redList.Remove(item);
+        if (blackList.Contains(item))
+            blackList.Remove(item);
+    }
+    
     private void ChangeSmileFace(float size)
     {
         switch (size)
@@ -76,13 +113,18 @@ public class StressLevel : MonoBehaviour, IInit
             ChangeColor(_currentSize);
             ChangeSmileFace(_currentSize);
 
-            if (Math.Abs(_currentSize - minValue) < 0.001)
+            if (Math.Abs(_currentSize - minValue) < 0.00001)
             {
                 CanvasScript.current.gameOverTimer.StartTimer();
             }
             else
             {
                 CanvasScript.current.gameOverTimer.StopTimer();
+
+                if (Math.Abs(_currentSize - 1) < 0.00001)
+                {
+                    CanvasScript.current.winPanel.Raise();
+                }
             }
         }
     }
@@ -90,21 +132,25 @@ public class StressLevel : MonoBehaviour, IInit
     public float ChangeValue
     {
         get => _changeValue;
-        set => _changeValue = Mathf.Clamp(value, -100, 1);
+        set
+        {
+            if (Math.Abs(value - _changeValue) < 0.0001f) return;
+            _changeValue = Mathf.Clamp(value, -100, 1);
+            
+            
+        }
     }
 
-    private void INIT_TRANSLATOR()
+    private void INIT_LISTS()
     {
-        translator = new Dictionary<StationStatus, float>();
-        translator[StationStatus.Great] = greatZonesValue;
-        translator[StationStatus.Ok] = okZonesValue;
-        translator[StationStatus.Bad] = badZonesValue;
-        translator[StationStatus.Died] = diedZonesValue;
+        yellowList = new List<InteractableItem>();
+        redList = new List<InteractableItem>();
+        blackList = new List<InteractableItem>();
     }
 
     public void INIT()
     {
-        INIT_TRANSLATOR();
+        INIT_LISTS();
         _rect = GetComponent<RectTransform>();
         maxSize = _rect.rect.height;
         CurrentSize = startValue;
@@ -126,13 +172,79 @@ public class StressLevel : MonoBehaviour, IInit
         return newValue * maxSize;
     }
 
-    public void CheckCurrentBalls()
+    private void CheckListsForMinimumValue()
     {
-        ChangeValue = 0;
-        List<InteractableItem> selectedItems = _interactContainer.SelectedItems;
-        foreach (InteractableItem item in selectedItems)
+        if (blackList.Count > 0)
         {
-            ChangeValue += translator[item.CurrentStatus];
+            ChangeValue = blackZonesValue;
+            return;
+        }
+        
+        if (redList.Count > 0)
+        {
+            ChangeValue = redZonesValue;
+            return;
+        }
+
+        if (yellowList.Count > 0)
+        {
+            ChangeValue = yellowZonesValue;
+            return;
+        }
+
+        ChangeValue = greenZonesValue;
+    }
+
+    public void PowerUpLevel(StationStatus status, bool fixedWithTerminal)
+    {
+        if (fixedWithTerminal)
+        {
+            CurrentSize += terminalRepairValue;
+            return;
+        }
+
+        switch (status)
+        {
+            default:
+                CurrentSize += greenZoneRepairValue;
+                break;
+            case StationStatus.Ok:
+                CurrentSize += yellowZoneRepairValue;
+                break;
+            case StationStatus.Bad:
+                CurrentSize += redZoneRepairValue;
+                break;
+            case StationStatus.Died:
+                CurrentSize += blackZoneRepairValue;
+                break;
+        }
+
+    }
+
+    public void CheckCurrentBalls(InteractableItem item)
+    {
+        StationStatus status = item.CurrentStatus;
+        switch (status)
+        {
+            default:
+                RemoveFromAllLists(item);
+                CheckListsForMinimumValue();
+                break;
+            case StationStatus.Ok:
+                RemoveFromAllLists(item);
+                AddToYellowList(item);
+                CheckListsForMinimumValue();
+                break;
+            case StationStatus.Bad:
+                RemoveFromAllLists(item);
+                AddToRedList(item);
+                CheckListsForMinimumValue();
+                break;
+            case StationStatus.Died:
+                RemoveFromAllLists(item);
+                AddToBlackList(item);
+                CheckListsForMinimumValue();
+                break;
         }
     }
 

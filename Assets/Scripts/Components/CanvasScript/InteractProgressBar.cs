@@ -48,7 +48,7 @@ public class InteractProgressBar : MonoBehaviour, IInit
 
         if (m_currentItem != null)
         {
-            m_currentItem.InteractActions();
+            m_currentItem.InteractActions(false);
             StopProgress();
         }
     }
