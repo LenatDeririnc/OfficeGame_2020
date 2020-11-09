@@ -143,7 +143,7 @@ PrefabInstance:
     - target: {fileID: 4125725869713449646, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -27.631653
+      value: -25.996
       objectReference: {fileID: 0}
     - target: {fileID: 4125725869713449646, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
@@ -153,7 +153,7 @@ PrefabInstance:
     - target: {fileID: 4125725869713449646, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.391
+      value: -5.216
       objectReference: {fileID: 0}
     - target: {fileID: 4125725869713449646, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
@@ -223,17 +223,17 @@ PrefabInstance:
     - target: {fileID: 4130320082509823766, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
       propertyPath: m_id
-      value: 65
+      value: S2
       objectReference: {fileID: 0}
     - target: {fileID: 4130320082509823766, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
       propertyPath: m_command
-      value: 65-01
+      value: s2-01
       objectReference: {fileID: 0}
     - target: {fileID: 4130320082509823766, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
       propertyPath: m_logMessage
-      value: 'RDP Access: Mainframe63, launching script... Success!'
+      value: 'RDP Access: Server_2, launching script... Success!'
       objectReference: {fileID: 0}
     - target: {fileID: 4130320082509823766, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
@@ -328,7 +328,7 @@ PrefabInstance:
     - target: {fileID: 4131867020809151904, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
       propertyPath: m_Name
-      value: 65
+      value: S2
       objectReference: {fileID: 0}
     - target: {fileID: 4131867020809151904, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
@@ -442,7 +442,7 @@ PrefabInstance:
     - target: {fileID: 4125725869713449646, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -11.23
+      value: -11.101
       objectReference: {fileID: 0}
     - target: {fileID: 4125725869713449646, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
@@ -452,7 +452,7 @@ PrefabInstance:
     - target: {fileID: 4125725869713449646, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -14.619
+      value: -15.647
       objectReference: {fileID: 0}
     - target: {fileID: 4125725869713449646, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
@@ -522,17 +522,17 @@ PrefabInstance:
     - target: {fileID: 4130320082509823766, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
       propertyPath: m_id
-      value: 24
+      value: K5
       objectReference: {fileID: 0}
     - target: {fileID: 4130320082509823766, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
       propertyPath: m_command
-      value: 24-01
+      value: k5-01
       objectReference: {fileID: 0}
     - target: {fileID: 4130320082509823766, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
       propertyPath: m_logMessage
-      value: 'RDP Access: Workstation21, launching script... Success!'
+      value: 'RDP Access: Workstation_K5, launching script... Success!'
       objectReference: {fileID: 0}
     - target: {fileID: 4130320082509823766, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
@@ -627,7 +627,7 @@ PrefabInstance:
     - target: {fileID: 4131867020809151904, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
       propertyPath: m_Name
-      value: 24
+      value: K5
       objectReference: {fileID: 0}
     - target: {fileID: 4131867020809151904, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
@@ -2291,17 +2291,17 @@ PrefabInstance:
     - target: {fileID: 4130320082509823766, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
       propertyPath: m_id
-      value: 46
+      value: K8
       objectReference: {fileID: 0}
     - target: {fileID: 4130320082509823766, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
       propertyPath: m_logMessage
-      value: 'RDP Access: Workstation59, launching script... Success!'
+      value: 'RDP Access: Workstation_K8, launching script... Success!'
       objectReference: {fileID: 0}
     - target: {fileID: 4130320082509823766, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
       propertyPath: m_command
-      value: 46-01
+      value: k8-01
       objectReference: {fileID: 0}
     - target: {fileID: 4130320082509823766, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
@@ -2396,7 +2396,7 @@ PrefabInstance:
     - target: {fileID: 4131867020809151904, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
       propertyPath: m_Name
-      value: 46
+      value: K8
       objectReference: {fileID: 0}
     - target: {fileID: 4131867020809151904, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
@@ -2893,7 +2893,7 @@ PrefabInstance:
     - target: {fileID: 4125725869713449646, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -12.178
+      value: -12.193
       objectReference: {fileID: 0}
     - target: {fileID: 4125725869713449646, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
@@ -2903,7 +2903,7 @@ PrefabInstance:
     - target: {fileID: 4125725869713449646, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -7.109
+      value: -6.656
       objectReference: {fileID: 0}
     - target: {fileID: 4125725869713449646, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
@@ -2973,17 +2973,17 @@ PrefabInstance:
     - target: {fileID: 4130320082509823766, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
       propertyPath: m_id
-      value: 47
+      value: K6
       objectReference: {fileID: 0}
     - target: {fileID: 4130320082509823766, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
       propertyPath: m_logMessage
-      value: 'RDP Access: Workstation59, launching script... Success!'
+      value: 'RDP Access: Workstation_K6, launching script... Success!'
       objectReference: {fileID: 0}
     - target: {fileID: 4130320082509823766, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
       propertyPath: m_command
-      value: 47-01
+      value: k6-01
       objectReference: {fileID: 0}
     - target: {fileID: 4130320082509823766, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
@@ -3078,7 +3078,7 @@ PrefabInstance:
     - target: {fileID: 4131867020809151904, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
       propertyPath: m_Name
-      value: 47
+      value: K6
       objectReference: {fileID: 0}
     - target: {fileID: 4131867020809151904, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
@@ -3190,10 +3190,15 @@ MonoBehaviour:
     m_NumColorKeys: 3
     m_NumAlphaKeys: 2
   startValue: 0.6
-  greatZonesValue: 2
-  okZonesValue: 0
-  badZonesValue: -1
-  diedZonesValue: -2
+  greenZonesValue: 0
+  yellowZonesValue: 0
+  redZonesValue: 0
+  blackZonesValue: 0
+  greenZoneRepairValue: 0
+  yellowZoneRepairValue: 0
+  redZoneRepairValue: 0
+  blackZoneRepairValue: 0
+  terminalRepairValue: 0
   _changeSpeed: 0.01
 --- !u!114 &1118704328
 MonoBehaviour:
@@ -3351,7 +3356,7 @@ PrefabInstance:
     - target: {fileID: 4125725869713449646, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -16.77
+      value: -18.228
       objectReference: {fileID: 0}
     - target: {fileID: 4125725869713449646, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
@@ -3361,7 +3366,7 @@ PrefabInstance:
     - target: {fileID: 4125725869713449646, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -11.289
+      value: -12.481
       objectReference: {fileID: 0}
     - target: {fileID: 4125725869713449646, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
@@ -3431,17 +3436,17 @@ PrefabInstance:
     - target: {fileID: 4130320082509823766, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
       propertyPath: m_id
-      value: 34
+      value: P2
       objectReference: {fileID: 0}
     - target: {fileID: 4130320082509823766, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
       propertyPath: m_logMessage
-      value: 'RDP Access: Workstation59, launching script... Success!'
+      value: 'RDP Access: Printer_2, launching script... Success!'
       objectReference: {fileID: 0}
     - target: {fileID: 4130320082509823766, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
       propertyPath: m_command
-      value: 34-01
+      value: p2-01
       objectReference: {fileID: 0}
     - target: {fileID: 4130320082509823766, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
@@ -3536,7 +3541,7 @@ PrefabInstance:
     - target: {fileID: 4131867020809151904, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
       propertyPath: m_Name
-      value: 34
+      value: Pr2
       objectReference: {fileID: 0}
     - target: {fileID: 4131867020809151904, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
@@ -3769,6 +3774,236 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 561a83e067f549b48e9659d062ea1855, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &1282288003
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 3565179766072012357}
+    m_Modifications:
+    - target: {fileID: 2145417053835130956, guid: 56162599e00a283438b949dd95e05441,
+        type: 3}
+      propertyPath: mainRenderableMesh
+      value: 
+      objectReference: {fileID: 1355060680}
+    - target: {fileID: 3703535452276639974, guid: 56162599e00a283438b949dd95e05441,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 1355060680}
+    - target: {fileID: 4108329120822307538, guid: 56162599e00a283438b949dd95e05441,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4125725869713449646, guid: 56162599e00a283438b949dd95e05441,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -18.161
+      objectReference: {fileID: 0}
+    - target: {fileID: 4125725869713449646, guid: 56162599e00a283438b949dd95e05441,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.321
+      objectReference: {fileID: 0}
+    - target: {fileID: 4125725869713449646, guid: 56162599e00a283438b949dd95e05441,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -8.673
+      objectReference: {fileID: 0}
+    - target: {fileID: 4125725869713449646, guid: 56162599e00a283438b949dd95e05441,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4125725869713449646, guid: 56162599e00a283438b949dd95e05441,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4125725869713449646, guid: 56162599e00a283438b949dd95e05441,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4125725869713449646, guid: 56162599e00a283438b949dd95e05441,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4125725869713449646, guid: 56162599e00a283438b949dd95e05441,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 4125725869713449646, guid: 56162599e00a283438b949dd95e05441,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4125725869713449646, guid: 56162599e00a283438b949dd95e05441,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4125725869713449646, guid: 56162599e00a283438b949dd95e05441,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4130320082509823766, guid: 56162599e00a283438b949dd95e05441,
+        type: 3}
+      propertyPath: m_health
+      value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 4130320082509823766, guid: 56162599e00a283438b949dd95e05441,
+        type: 3}
+      propertyPath: m_maxHealth
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 4130320082509823766, guid: 56162599e00a283438b949dd95e05441,
+        type: 3}
+      propertyPath: m_changeHealthSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4130320082509823766, guid: 56162599e00a283438b949dd95e05441,
+        type: 3}
+      propertyPath: m_greenZone
+      value: 850
+      objectReference: {fileID: 0}
+    - target: {fileID: 4130320082509823766, guid: 56162599e00a283438b949dd95e05441,
+        type: 3}
+      propertyPath: m_redZone
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 4130320082509823766, guid: 56162599e00a283438b949dd95e05441,
+        type: 3}
+      propertyPath: m_id
+      value: P4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4130320082509823766, guid: 56162599e00a283438b949dd95e05441,
+        type: 3}
+      propertyPath: m_command
+      value: p4-01
+      objectReference: {fileID: 0}
+    - target: {fileID: 4130320082509823766, guid: 56162599e00a283438b949dd95e05441,
+        type: 3}
+      propertyPath: m_logMessage
+      value: 'RDP Access: Printer_4, launching script... Success!'
+      objectReference: {fileID: 0}
+    - target: {fileID: 4130320082509823766, guid: 56162599e00a283438b949dd95e05441,
+        type: 3}
+      propertyPath: GreatColor.r
+      value: 0.21888566
+      objectReference: {fileID: 0}
+    - target: {fileID: 4130320082509823766, guid: 56162599e00a283438b949dd95e05441,
+        type: 3}
+      propertyPath: GreatColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4130320082509823766, guid: 56162599e00a283438b949dd95e05441,
+        type: 3}
+      propertyPath: GreatColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4130320082509823766, guid: 56162599e00a283438b949dd95e05441,
+        type: 3}
+      propertyPath: OkColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4130320082509823766, guid: 56162599e00a283438b949dd95e05441,
+        type: 3}
+      propertyPath: OkColor.g
+      value: 0.52359486
+      objectReference: {fileID: 0}
+    - target: {fileID: 4130320082509823766, guid: 56162599e00a283438b949dd95e05441,
+        type: 3}
+      propertyPath: OkColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4130320082509823766, guid: 56162599e00a283438b949dd95e05441,
+        type: 3}
+      propertyPath: BadColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4130320082509823766, guid: 56162599e00a283438b949dd95e05441,
+        type: 3}
+      propertyPath: BadColor.g
+      value: 0.14508267
+      objectReference: {fileID: 0}
+    - target: {fileID: 4130320082509823766, guid: 56162599e00a283438b949dd95e05441,
+        type: 3}
+      propertyPath: BadColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4130320082509823766, guid: 56162599e00a283438b949dd95e05441,
+        type: 3}
+      propertyPath: DiedColor.r
+      value: 0.2924528
+      objectReference: {fileID: 0}
+    - target: {fileID: 4130320082509823766, guid: 56162599e00a283438b949dd95e05441,
+        type: 3}
+      propertyPath: DiedColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4130320082509823766, guid: 56162599e00a283438b949dd95e05441,
+        type: 3}
+      propertyPath: DiedColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4130320082509823766, guid: 56162599e00a283438b949dd95e05441,
+        type: 3}
+      propertyPath: ok_flickiring_time
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4130320082509823766, guid: 56162599e00a283438b949dd95e05441,
+        type: 3}
+      propertyPath: bad_flickiring_time
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4130320082509823766, guid: 56162599e00a283438b949dd95e05441,
+        type: 3}
+      propertyPath: GreatColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4130320082509823766, guid: 56162599e00a283438b949dd95e05441,
+        type: 3}
+      propertyPath: OkColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4130320082509823766, guid: 56162599e00a283438b949dd95e05441,
+        type: 3}
+      propertyPath: BadColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4130320082509823766, guid: 56162599e00a283438b949dd95e05441,
+        type: 3}
+      propertyPath: DiedColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4131867020809151904, guid: 56162599e00a283438b949dd95e05441,
+        type: 3}
+      propertyPath: m_Name
+      value: Pr4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4131867020809151904, guid: 56162599e00a283438b949dd95e05441,
+        type: 3}
+      propertyPath: m_Layer
+      value: 31
+      objectReference: {fileID: 0}
+    - target: {fileID: 6616357145752281760, guid: 56162599e00a283438b949dd95e05441,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 1355060680}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 56162599e00a283438b949dd95e05441, type: 3}
+--- !u!4 &1282288004 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4125725869713449646, guid: 56162599e00a283438b949dd95e05441,
+    type: 3}
+  m_PrefabInstance: {fileID: 1282288003}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &1296374463
 Mesh:
   m_ObjectHideFlags: 0
@@ -4295,7 +4530,7 @@ PrefabInstance:
     - target: {fileID: 4125725869713449646, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -20.687
+      value: -20.445
       objectReference: {fileID: 0}
     - target: {fileID: 4125725869713449646, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
@@ -4305,7 +4540,7 @@ PrefabInstance:
     - target: {fileID: 4125725869713449646, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -9.079
+      value: -8.673
       objectReference: {fileID: 0}
     - target: {fileID: 4125725869713449646, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
@@ -4375,17 +4610,17 @@ PrefabInstance:
     - target: {fileID: 4130320082509823766, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
       propertyPath: m_id
-      value: 32
+      value: P3
       objectReference: {fileID: 0}
     - target: {fileID: 4130320082509823766, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
       propertyPath: m_command
-      value: 32-01
+      value: p3-01
       objectReference: {fileID: 0}
     - target: {fileID: 4130320082509823766, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
       propertyPath: m_logMessage
-      value: 'RDP Access: Printer33, launching script... Success!'
+      value: 'RDP Access: Printer_3, launching script... Success!'
       objectReference: {fileID: 0}
     - target: {fileID: 4130320082509823766, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
@@ -4480,7 +4715,7 @@ PrefabInstance:
     - target: {fileID: 4131867020809151904, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
       propertyPath: m_Name
-      value: 32
+      value: Pr3
       objectReference: {fileID: 0}
     - target: {fileID: 4131867020809151904, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
@@ -4608,7 +4843,7 @@ PrefabInstance:
     - target: {fileID: 4125725869713449646, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.932
+      value: -9.247
       objectReference: {fileID: 0}
     - target: {fileID: 4125725869713449646, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
@@ -4618,7 +4853,7 @@ PrefabInstance:
     - target: {fileID: 4125725869713449646, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -16.052
+      value: -17.398
       objectReference: {fileID: 0}
     - target: {fileID: 4125725869713449646, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
@@ -4688,17 +4923,17 @@ PrefabInstance:
     - target: {fileID: 4130320082509823766, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
       propertyPath: m_id
-      value: 13
+      value: K3
       objectReference: {fileID: 0}
     - target: {fileID: 4130320082509823766, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
       propertyPath: m_command
-      value: 13-01
+      value: k3-01
       objectReference: {fileID: 0}
     - target: {fileID: 4130320082509823766, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
       propertyPath: m_logMessage
-      value: 'RDP Access: Workstation21, launching script... Success!'
+      value: 'RDP Access: Workstation_K3, launching script... Success!'
       objectReference: {fileID: 0}
     - target: {fileID: 4130320082509823766, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
@@ -4793,7 +5028,7 @@ PrefabInstance:
     - target: {fileID: 4131867020809151904, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
       propertyPath: m_Name
-      value: 13
+      value: K3
       objectReference: {fileID: 0}
     - target: {fileID: 4131867020809151904, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
@@ -5487,7 +5722,7 @@ PrefabInstance:
     - target: {fileID: 4125725869713449646, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -14.558
+      value: -14.223
       objectReference: {fileID: 0}
     - target: {fileID: 4125725869713449646, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
@@ -5497,7 +5732,7 @@ PrefabInstance:
     - target: {fileID: 4125725869713449646, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -14.495
+      value: -15.697
       objectReference: {fileID: 0}
     - target: {fileID: 4125725869713449646, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
@@ -5567,17 +5802,17 @@ PrefabInstance:
     - target: {fileID: 4130320082509823766, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
       propertyPath: m_id
-      value: 25
+      value: K4
       objectReference: {fileID: 0}
     - target: {fileID: 4130320082509823766, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
       propertyPath: m_command
-      value: 25-01
+      value: k4-01
       objectReference: {fileID: 0}
     - target: {fileID: 4130320082509823766, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
       propertyPath: m_logMessage
-      value: 'RDP Access: Workstation21, launching script... Success!'
+      value: 'RDP Access: Workstation_K4, launching script... Success!'
       objectReference: {fileID: 0}
     - target: {fileID: 4130320082509823766, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
@@ -5672,7 +5907,7 @@ PrefabInstance:
     - target: {fileID: 4131867020809151904, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
       propertyPath: m_Name
-      value: 25
+      value: K4
       objectReference: {fileID: 0}
     - target: {fileID: 4131867020809151904, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
@@ -8398,17 +8633,17 @@ PrefabInstance:
     - target: {fileID: 4125725869713449646, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10.588
+      value: -10.58
       objectReference: {fileID: 0}
     - target: {fileID: 4125725869713449646, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.867
+      value: 1.011
       objectReference: {fileID: 0}
     - target: {fileID: 4125725869713449646, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.406
+      value: -2.792
       objectReference: {fileID: 0}
     - target: {fileID: 4125725869713449646, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
@@ -8478,17 +8713,17 @@ PrefabInstance:
     - target: {fileID: 4130320082509823766, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
       propertyPath: m_id
-      value: 59
+      value: K9
       objectReference: {fileID: 0}
     - target: {fileID: 4130320082509823766, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
       propertyPath: m_logMessage
-      value: 'RDP Access: Workstation59, launching script... Success!'
+      value: 'RDP Access: Workstation_K9, launching script... Success!'
       objectReference: {fileID: 0}
     - target: {fileID: 4130320082509823766, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
       propertyPath: m_command
-      value: 59-01
+      value: k9-01
       objectReference: {fileID: 0}
     - target: {fileID: 4130320082509823766, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
@@ -8583,7 +8818,7 @@ PrefabInstance:
     - target: {fileID: 4131867020809151904, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
       propertyPath: m_Name
-      value: 59
+      value: K9
       objectReference: {fileID: 0}
     - target: {fileID: 4131867020809151904, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
@@ -8623,7 +8858,7 @@ PrefabInstance:
     - target: {fileID: 4125725869713449646, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -12.217
+      value: -12.295
       objectReference: {fileID: 0}
     - target: {fileID: 4125725869713449646, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
@@ -8633,7 +8868,7 @@ PrefabInstance:
     - target: {fileID: 4125725869713449646, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -15.957
+      value: -17.463
       objectReference: {fileID: 0}
     - target: {fileID: 4125725869713449646, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
@@ -8703,17 +8938,17 @@ PrefabInstance:
     - target: {fileID: 4130320082509823766, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
       propertyPath: m_id
-      value: 12
+      value: K2
       objectReference: {fileID: 0}
     - target: {fileID: 4130320082509823766, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
       propertyPath: m_command
-      value: 12-01
+      value: k2-01
       objectReference: {fileID: 0}
     - target: {fileID: 4130320082509823766, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
       propertyPath: m_logMessage
-      value: 'RDP Access: Workstation21, launching script... Success!'
+      value: 'RDP Access: Workstation_K2, launching script... Success!'
       objectReference: {fileID: 0}
     - target: {fileID: 4130320082509823766, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
@@ -8808,7 +9043,7 @@ PrefabInstance:
     - target: {fileID: 4131867020809151904, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
       propertyPath: m_Name
-      value: 12
+      value: K2
       objectReference: {fileID: 0}
     - target: {fileID: 4131867020809151904, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
@@ -8848,7 +9083,7 @@ PrefabInstance:
     - target: {fileID: 4125725869713449646, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -20.687
+      value: -20.455
       objectReference: {fileID: 0}
     - target: {fileID: 4125725869713449646, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
@@ -8858,7 +9093,7 @@ PrefabInstance:
     - target: {fileID: 4125725869713449646, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -11.287
+      value: -12.564
       objectReference: {fileID: 0}
     - target: {fileID: 4125725869713449646, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
@@ -8928,17 +9163,17 @@ PrefabInstance:
     - target: {fileID: 4130320082509823766, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
       propertyPath: m_id
-      value: 33
+      value: P1
       objectReference: {fileID: 0}
     - target: {fileID: 4130320082509823766, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
       propertyPath: m_command
-      value: 33-01
+      value: P1-01
       objectReference: {fileID: 0}
     - target: {fileID: 4130320082509823766, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
       propertyPath: m_logMessage
-      value: 'RDP Access: Printer33, launching script... Success!'
+      value: 'RDP Access: Printer_1, launching script... Success!'
       objectReference: {fileID: 0}
     - target: {fileID: 4130320082509823766, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
@@ -9033,7 +9268,7 @@ PrefabInstance:
     - target: {fileID: 4131867020809151904, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
       propertyPath: m_Name
-      value: 33
+      value: Pr1
       objectReference: {fileID: 0}
     - target: {fileID: 4131867020809151904, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
@@ -9073,7 +9308,7 @@ PrefabInstance:
     - target: {fileID: 4125725869713449646, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -17.645
+      value: -18.659
       objectReference: {fileID: 0}
     - target: {fileID: 4125725869713449646, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
@@ -9083,7 +9318,7 @@ PrefabInstance:
     - target: {fileID: 4125725869713449646, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -15.549
+      value: -15.44
       objectReference: {fileID: 0}
     - target: {fileID: 4125725869713449646, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
@@ -9153,17 +9388,17 @@ PrefabInstance:
     - target: {fileID: 4130320082509823766, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
       propertyPath: m_id
-      value: 11
+      value: K1
       objectReference: {fileID: 0}
     - target: {fileID: 4130320082509823766, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
       propertyPath: m_command
-      value: 11-01
+      value: k1-01
       objectReference: {fileID: 0}
     - target: {fileID: 4130320082509823766, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
       propertyPath: m_logMessage
-      value: 'RDP Access: Workstation14, launching script... Success!'
+      value: 'RDP Access: Workstation_K1, launching script... Success!'
       objectReference: {fileID: 0}
     - target: {fileID: 4130320082509823766, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
@@ -9258,7 +9493,7 @@ PrefabInstance:
     - target: {fileID: 4131867020809151904, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
       propertyPath: m_Name
-      value: 11
+      value: K1
       objectReference: {fileID: 0}
     - target: {fileID: 4131867020809151904, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
@@ -9566,7 +9801,7 @@ PrefabInstance:
     - target: {fileID: 4125725869713449646, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -23.931
+      value: -29.81
       objectReference: {fileID: 0}
     - target: {fileID: 4125725869713449646, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
@@ -9576,7 +9811,7 @@ PrefabInstance:
     - target: {fileID: 4125725869713449646, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.259
+      value: -3.404
       objectReference: {fileID: 0}
     - target: {fileID: 4125725869713449646, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
@@ -9646,17 +9881,17 @@ PrefabInstance:
     - target: {fileID: 4130320082509823766, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
       propertyPath: m_id
-      value: 66
+      value: S1
       objectReference: {fileID: 0}
     - target: {fileID: 4130320082509823766, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
       propertyPath: m_command
-      value: 66-01
+      value: s1-01
       objectReference: {fileID: 0}
     - target: {fileID: 4130320082509823766, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
       propertyPath: m_logMessage
-      value: 'RDP Access: Mainframe63, launching script... Success!'
+      value: 'RDP Access: Server_1, launching script... Success!'
       objectReference: {fileID: 0}
     - target: {fileID: 4130320082509823766, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
@@ -9751,7 +9986,7 @@ PrefabInstance:
     - target: {fileID: 4131867020809151904, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
       propertyPath: m_Name
-      value: 66
+      value: S1
       objectReference: {fileID: 0}
     - target: {fileID: 4131867020809151904, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
@@ -9882,17 +10117,17 @@ PrefabInstance:
     - target: {fileID: 4125725869713449646, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10.713
+      value: -10.659
       objectReference: {fileID: 0}
     - target: {fileID: 4125725869713449646, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.859
+      value: 1.017
       objectReference: {fileID: 0}
     - target: {fileID: 4125725869713449646, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.472
+      value: -6.148
       objectReference: {fileID: 0}
     - target: {fileID: 4125725869713449646, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
@@ -9962,17 +10197,17 @@ PrefabInstance:
     - target: {fileID: 4130320082509823766, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
       propertyPath: m_id
-      value: 58
+      value: K7
       objectReference: {fileID: 0}
     - target: {fileID: 4130320082509823766, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
       propertyPath: m_command
-      value: 58-01
+      value: k7-01
       objectReference: {fileID: 0}
     - target: {fileID: 4130320082509823766, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
       propertyPath: m_logMessage
-      value: 'RDP Access: Workstation46, launching script... Success!'
+      value: 'RDP Access: Workstation_K7, launching script... Success!'
       objectReference: {fileID: 0}
     - target: {fileID: 4130320082509823766, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
@@ -10067,7 +10302,7 @@ PrefabInstance:
     - target: {fileID: 4131867020809151904, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
       propertyPath: m_Name
-      value: 58
+      value: K7
       objectReference: {fileID: 0}
     - target: {fileID: 4131867020809151904, guid: 56162599e00a283438b949dd95e05441,
         type: 3}
@@ -10247,6 +10482,7 @@ Transform:
   - {fileID: 1107684730}
   - {fileID: 1190631678}
   - {fileID: 69022752}
+  - {fileID: 1282288004}
   m_Father: {fileID: 173635476}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -12842,7 +13078,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8179228873552738916}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -28.769, y: 1.156, z: -11.338}
+  m_LocalPosition: {x: -30.319, y: 1.156, z: -10.621}
   m_LocalScale: {x: 0.76639056, y: 0.76639056, z: 0.76639056}
   m_Children:
   - {fileID: 8043091252228874834}
