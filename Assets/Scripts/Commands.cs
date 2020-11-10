@@ -51,13 +51,16 @@ public class Commands : MonoBehaviour, IInit
         if (CommandLibary.ContainsKey(newArgs))
         {
             InteractableItem current = CommandLibary[newArgs];
-
-            bool isActive = current.isAwableForTerminal;
+            if (!current.isAvable) return;
+            
+            bool isActiveForTerminal = current.isAwableForTerminal;
             string command = current.command;
             string logMessage = current.logMessage;
             Action action = current.InteractWithCommand();
+
+            Debug.Log("ping");
             
-            if (!isActive) return;
+            if (!isActiveForTerminal) return;
             if (action != null) action();
             if (logMessage != null) ShowMessage(logMessage);
         }
