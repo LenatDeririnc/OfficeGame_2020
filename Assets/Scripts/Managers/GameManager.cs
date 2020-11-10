@@ -55,7 +55,6 @@ public class GameManager : MonoBehaviour, IInit
         StopMoving = context => baseCharacterController.SetPause(context); 
         Interact = context => playerInterface.Interact();
         StopInteract = context => CanvasScript.current.interactProgressBar.StopProgress();
-        ApplyConsoleInput = context => CanvasScript.current.inputPanel.acceptTyping();
         ExitFromConsole = context => CanvasScript.current.inputPanel.SwitchFromCommandMode();
     }
 
