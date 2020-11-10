@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour, IInit
     private static Action<InputAction.CallbackContext> StopMoving;
     private static Action<InputAction.CallbackContext> Interact;
     private static Action<InputAction.CallbackContext> StopInteract;
+    private static Action<InputAction.CallbackContext> ExitFromConsole;
 
     private void FILL_INIT_ORDER()
     {
@@ -54,6 +55,8 @@ public class GameManager : MonoBehaviour, IInit
         StopMoving = context => baseCharacterController.SetPause(context); 
         Interact = context => playerInterface.Interact();
         StopInteract = context => CanvasScript.current.interactProgressBar.StopProgress();
+        ApplyConsoleInput = context => CanvasScript.current.inputPanel.acceptTyping();
+        ExitFromConsole = context => CanvasScript.current.inputPanel.SwitchFromCommandMode();
     }
 
     public void SubscribeInput()
@@ -74,7 +77,7 @@ public class GameManager : MonoBehaviour, IInit
         BaseInputManager.Interface.Pause.performed += Pause;
         BaseInputManager.Interface.Pause.performed += StopMoving;
         BaseInputManager.Interface.Interact.performed += Interact;
-        BaseInputManager.Interface.Interact.canceled += StopInteract;
+        BaseInputManager.CommandMode.ExitFromCommandMode.performed += ExitFromConsole;
     }
 
     public void UnsubscribeInput()
@@ -96,6 +99,7 @@ public class GameManager : MonoBehaviour, IInit
         BaseInputManager.Interface.Pause.performed -= StopMoving;
         BaseInputManager.Interface.Interact.performed -= Interact;
         BaseInputManager.Interface.Interact.canceled -= StopInteract;
+        BaseInputManager.CommandMode.ExitFromCommandMode.performed -= ExitFromConsole;
     }
     
     public void INIT()
