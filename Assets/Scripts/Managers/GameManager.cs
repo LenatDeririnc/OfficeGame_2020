@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour, IInit
     private static Action<InputAction.CallbackContext> Pause;
     private static Action<InputAction.CallbackContext> StopMoving;
     private static Action<InputAction.CallbackContext> Interact;
+    private static Action<InputAction.CallbackContext> StopInteract;
 
     private void FILL_INIT_ORDER()
     {
@@ -52,6 +53,7 @@ public class GameManager : MonoBehaviour, IInit
         Pause = context => CanvasScript.current.pauseScript.Raise();
         StopMoving = context => baseCharacterController.SetPause(context); 
         Interact = context => playerInterface.Interact();
+        StopInteract = context => CanvasScript.current.interactProgressBar.StopProgress();
     }
 
     public void SubscribeInput()
@@ -72,7 +74,7 @@ public class GameManager : MonoBehaviour, IInit
         BaseInputManager.Interface.Pause.performed += Pause;
         BaseInputManager.Interface.Pause.performed += StopMoving;
         BaseInputManager.Interface.Interact.performed += Interact;
-        BaseInputManager.Interface.Interact.canceled += Interact;
+        BaseInputManager.Interface.Interact.canceled += StopInteract;
     }
 
     public void UnsubscribeInput()
@@ -93,7 +95,7 @@ public class GameManager : MonoBehaviour, IInit
         BaseInputManager.Interface.Pause.performed -= Pause;
         BaseInputManager.Interface.Pause.performed -= StopMoving;
         BaseInputManager.Interface.Interact.performed -= Interact;
-        BaseInputManager.Interface.Interact.canceled -= Interact;
+        BaseInputManager.Interface.Interact.canceled -= StopInteract;
     }
     
     public void INIT()
