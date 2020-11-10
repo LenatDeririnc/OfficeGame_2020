@@ -60,7 +60,6 @@ public class GameManager : MonoBehaviour, IInit
 
     public void SubscribeInput()
     {
-        Debug.Log("Sub!");
         BaseInputManager.PlayerMovement.ViewHorizontal.performed += ViewHorizontal;
         BaseInputManager.PlayerMovement.ViewHorizontal.canceled += ViewHorizontal;
         BaseInputManager.PlayerMovement.ViewVertical.performed += ViewVertical;
@@ -81,7 +80,6 @@ public class GameManager : MonoBehaviour, IInit
 
     public void UnsubscribeInput()
     {
-        Debug.Log("Unsub!");
         BaseInputManager.PlayerMovement.ViewHorizontal.performed -= ViewHorizontal;
         BaseInputManager.PlayerMovement.ViewHorizontal.canceled -= ViewHorizontal;
         BaseInputManager.PlayerMovement.ViewVertical.performed -= ViewVertical;

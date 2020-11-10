@@ -7,13 +7,35 @@ using Random = UnityEngine.Random;
 
 public class InteractContainer : MonoBehaviour, IInit
 {
+    [SerializeField] private float appendItemIntervalSeconds;
+    [SerializeField] private int startActiveElements;
+    [SerializeField] private int maxActiveElements;
     private InteractableItem[] items;
     private List<InteractableItem> selectedItems;
     private List<InteractableItem> otherItems;
 
     public List<InteractableItem> SelectedItems => selectedItems;
     public List<InteractableItem> OtherItems => otherItems;
-    
+
+    public void INIT()
+    {
+        selectedItems = new List<InteractableItem>();
+        otherItems = new List<InteractableItem>();
+        AppendItemCountCorutine = AppendItemCount();
+    }
+
+    public void GET()
+    {
+        items = BallsScripts.current.Balls;
+    }
+
+    public void AFTER_INIT()
+    {
+        RefreshItemsOrder();
+        SelectItems();
+        StartCoroutine(AppendItemCountCorutine);
+    }
+
     private InteractableItem OtherItems_Pop()
     {
         InteractableItem temp = otherItems[0];
@@ -27,17 +49,6 @@ public class InteractContainer : MonoBehaviour, IInit
             otherItems[randindex] = sorttemp;
         }
         return temp;
-    }
-
-    public void INIT()
-    {
-        selectedItems = new List<InteractableItem>();
-        otherItems = new List<InteractableItem>();
-    }
-
-    public void GET()
-    {
-        items = BallsScripts.current.Balls;
     }
 
     private void RefreshItemsOrder()
@@ -55,35 +66,44 @@ public class InteractContainer : MonoBehaviour, IInit
     {
         for (int i = 0; i < items.Length; i++)
         {
-            if (i < 6)
+            if (i < startActiveElements)
             {
                 selectedItems.Add(items[i]);
                 items[i].isAvable = true;
             }
             else
             {
+                items[i].health = items[i].maxHealth;
+                items[i].OnStationStatusChanged();
                 otherItems.Add(items[i]);
             }
         }
     }
 
-    public void AFTER_INIT()
+    private IEnumerator AppendItemCountCorutine;
+    IEnumerator AppendItemCount()
     {
-        RefreshItemsOrder();
-        SelectItems();
+        yield return new WaitForSeconds(appendItemIntervalSeconds);
+        if (selectedItems.Count < maxActiveElements)
+        {
+            var newItem = OtherItems_Pop();
+            selectedItems.Add(newItem);
+            newItem.isAvable = true;
+            CanvasScript.current.stationsPanel.updateItems();
+        }
     }
 
     public void Next(InteractableItem previousItem)
     {
-        CanvasScript.current.stationsPanel.updateItems();
-
+        InteractableItem nextItem;
+        nextItem = OtherItems_Pop();
+        
         previousItem.isAvable = false;
         selectedItems.Remove(previousItem);
-
-        InteractableItem nextItem = OtherItems_Pop();
         selectedItems.Add(nextItem);
         otherItems.Add(previousItem);
         nextItem.isAvable = true;
-        
+
+        CanvasScript.current.stationsPanel.updateItems();
     }
 }

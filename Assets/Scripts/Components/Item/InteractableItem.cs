@@ -157,11 +157,11 @@ public class InteractableItem : Item, IInit
         }
     }
 
-    void SetMinimapStatus(StationStatus status)
+    public void SetMinimapStatus(StationStatus status)
     {
         switch (status)
         {
-            default:
+            case StationStatus.Great:
                 SetMinimapStatusDefaults(true, GreatColor, false, 0);
                 break;
             case StationStatus.Ok:
@@ -176,7 +176,7 @@ public class InteractableItem : Item, IInit
         }
     }
 
-    void OnStationStatusChanged()
+    public void OnStationStatusChanged()
     {
         SetMinimapStatus(CurrentStatus);
         CanvasScript.current.stressLevel.CheckCurrentBalls(this);

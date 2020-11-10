@@ -39,7 +39,6 @@ public class PauseScript : MonoBehaviour, IInit
 
     public void Raise()
     {
-        Debug.Log(Status);
         Status = !Status;
     }
 
