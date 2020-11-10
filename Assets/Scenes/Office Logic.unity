@@ -696,7 +696,7 @@ Transform:
   - {fileID: 2696610005587470138}
   - {fileID: 3754873930481169155}
   - {fileID: 1184499817382245454}
-  - {fileID: 3565179766072012357}
+  - {fileID: 326855980}
   - {fileID: 1235089925}
   m_Father: {fileID: 0}
   m_RootOrder: 1
@@ -904,6 +904,38 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: -1
   m_TargetDisplay: 0
+--- !u!1 &326855979
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 326855980}
+  m_Layer: 0
+  m_Name: Balls and Notes
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &326855980
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 326855979}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 3565179766072012357}
+  - {fileID: 1871090703}
+  m_Father: {fileID: 173635476}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &387661957
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6422,13 +6454,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1871090702}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -21.405657, y: 1.6344671, z: -10.821138}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1825527764}
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_Father: {fileID: 326855980}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1871090704
 MonoBehaviour:
@@ -9260,6 +9292,8 @@ MonoBehaviour:
   commands: {fileID: 984672359}
   playerInterface: {fileID: 0}
   mouseLook: {fileID: 0}
+  baseCharacterController: {fileID: 0}
+  baseFirstPersonController: {fileID: 0}
   player: {fileID: 5902016492761448564}
 --- !u!33 &1291522893345777008
 MeshFilter:
@@ -11344,8 +11378,8 @@ Transform:
   - {fileID: 1282288004}
   - {fileID: 2072685490633538352}
   - {fileID: 69022752}
-  m_Father: {fileID: 173635476}
-  m_RootOrder: 3
+  m_Father: {fileID: 326855980}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &3626425283651388321
 MeshRenderer:
@@ -11817,6 +11851,7 @@ MonoBehaviour:
   winPanel: {fileID: 687647580330473001}
   interactProgressBar: {fileID: 1540891804}
   stressLevel: {fileID: 1118704327}
+  pauseScript: {fileID: 0}
 --- !u!114 &3754873930591081036
 MonoBehaviour:
   m_ObjectHideFlags: 0
