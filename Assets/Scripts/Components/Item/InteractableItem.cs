@@ -28,6 +28,7 @@ public class InteractableItem : Item, IInit
     
     [SerializeField] private SpriteRenderer _smallDot;
     [SerializeField] private SpriteRenderer _bigDot;
+    [SerializeField] private StationPanelItem _stationPanelItem;
     [Space]
     [SerializeField] private Color GreatColor;
     [SerializeField] private Color OkColor;
@@ -82,7 +83,11 @@ public class InteractableItem : Item, IInit
     public float health
     {
         get => m_health;
-        set => m_health = Mathf.Clamp(value, 0, maxHealth);
+        set
+        {
+            m_health = Mathf.Clamp(value, 0, maxHealth);
+            _stationPanelItem.ConvertToProgressValue(m_health, 0, maxHealth);
+        }
     }
 
     public StationStatus CurrentStatus
@@ -226,12 +231,14 @@ public class InteractableItem : Item, IInit
     public void ShowObject()
     {
         m_gameObject.SetActive(true);
+        _stationPanelItem.ShowObject();
         StartCoroutine(DegreseHealth);
         m_isAvable = true;
     }
 
     public void HideObject()
     {
+        _stationPanelItem.HideObject();
         StopCoroutine(DegreseHealth);
         m_isAvable = false;
         m_gameObject.SetActive(false);

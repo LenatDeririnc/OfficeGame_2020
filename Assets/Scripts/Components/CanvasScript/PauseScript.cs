@@ -17,7 +17,7 @@ public class PauseScript : MonoBehaviour, IInit
         {
             if (status == value) return;
             status = value;
-
+            
             if (status)
             {
                 BallsScripts.current.StopTimers();
@@ -26,6 +26,10 @@ public class PauseScript : MonoBehaviour, IInit
             {
                 BallsScripts.current.ContinueTimers();
             }
+            
+            CanvasScript.current.gameOverTimer.SetPause(status);
+            GameManager.current.interactContainer.SetPause(status);
+            
             _gameObject.SetActive(status);
             _mouseLook.SetCursorLock(!status);
         }

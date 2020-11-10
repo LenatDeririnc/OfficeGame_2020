@@ -75,6 +75,7 @@ public class GameManager : MonoBehaviour, IInit
         BaseInputManager.Interface.Pause.performed += Pause;
         BaseInputManager.Interface.Pause.performed += StopMoving;
         BaseInputManager.Interface.Interact.performed += Interact;
+        BaseInputManager.Interface.Interact.canceled += StopInteract;
         BaseInputManager.CommandMode.ExitFromCommandMode.performed += ExitFromConsole;
     }
 

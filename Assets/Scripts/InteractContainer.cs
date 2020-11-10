@@ -80,6 +80,18 @@ public class InteractContainer : MonoBehaviour, IInit
         }
     }
 
+    public void SetPause(bool state)
+    {
+        if (state)
+        {
+            StopCoroutine(AppendItemCountCorutine);
+        }
+        else
+        {
+            StartCoroutine(AppendItemCountCorutine);
+        }
+    }
+
     private IEnumerator AppendItemCountCorutine;
     IEnumerator AppendItemCount()
     {
@@ -89,7 +101,7 @@ public class InteractContainer : MonoBehaviour, IInit
             var newItem = OtherItems_Pop();
             selectedItems.Add(newItem);
             newItem.isAvable = true;
-            CanvasScript.current.stationsPanel.updateItems();
+            // CanvasScript.current.stationsPanel.updateItems();
         }
     }
 
@@ -104,6 +116,6 @@ public class InteractContainer : MonoBehaviour, IInit
         otherItems.Add(previousItem);
         nextItem.isAvable = true;
 
-        CanvasScript.current.stationsPanel.updateItems();
+        // CanvasScript.current.stationsPanel.updateItems();
     }
 }

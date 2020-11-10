@@ -68,6 +68,21 @@ public class GameOverTimer : MonoBehaviour, IInit
         }
     }
 
+    public void SetPause(bool state)
+    {
+        if (isStarted)
+        {
+            if (state)
+            {
+                StopCoroutine(currentTimer);
+            }
+            else
+            {
+                StartCoroutine(currentTimer);
+            }
+        }
+    }
+
     private IEnumerator timerTick()
     {
         while (!isTerminated)
