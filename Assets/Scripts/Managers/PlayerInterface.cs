@@ -12,7 +12,6 @@ public class PlayerInterface : MonoBehaviour, IInit
     private Transform m_camera;
     private Item m_item;
     public bool _showInteract = true;
-    private InputPanelScript inputPanelScript;
     private InteractPanelScript interactPanel;
 
     public Item Item
@@ -52,23 +51,9 @@ public class PlayerInterface : MonoBehaviour, IInit
     public void GET()
     {
         interactPanel = CanvasScript.current.interactPanel;
-        inputPanelScript = CanvasScript.current.inputPanel;
     }
 
     public void AFTER_INIT()
-    {
-        INPUTS();
-        EVENTS();
-    }
-
-    private void INPUTS()
-    {
-        BaseInputManager.Interface.GotoCommandMode.performed += c => inputPanelScript.SwitchToCommandMode();;
-        BaseInputManager.CommandMode.ExitFromCommandMode.performed += c => inputPanelScript.SwitchFromCommandMode();
-        BaseInputManager.Interface.Interact.performed += c => Interact();
-    }
-    
-    private void EVENTS()
     {
         OnItemChanged += ShowInteract;
     }
@@ -78,7 +63,7 @@ public class PlayerInterface : MonoBehaviour, IInit
         interactPanel.ShowInteract(Item);
     }
 
-    private void Interact()
+    public void Interact()
     {
         if (Item is null) return;
         Item.Interact();

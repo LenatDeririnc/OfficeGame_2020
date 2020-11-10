@@ -1,30 +1,18 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
-public class InitSequence : MonoBehaviour, IInit
+public class MainMenu_initSequencer : MonoBehaviour, IInit
 {
-    public static InitSequence current;
-    [SerializeField] private CanvasScript _canvasScript;
+    public static MainMenu_initSequencer current;
     [SerializeField] private GameManager _gameManager;
-    [SerializeField] private GameEvents _gameEvents;
-    [SerializeField] private BallsScripts _ballsScripts;
-    [SerializeField] private NotesScript _notesScript;
-    [SerializeField] private InteractItems _interactItems;
 
     private List<IInit> INIT_ORDER;
 
     private void FILL_INIT_ORDER()
     {
         INIT_ORDER = new List<IInit>();
-        INIT_ORDER.Add(_ballsScripts);
-        INIT_ORDER.Add(_notesScript);
-        INIT_ORDER.Add(_interactItems);
         INIT_ORDER.Add(_gameManager);
-        INIT_ORDER.Add(_canvasScript);
-        INIT_ORDER.Add(_gameEvents);
     }
     
     public void INIT()
@@ -51,8 +39,6 @@ public class InitSequence : MonoBehaviour, IInit
         {
             initElement.AFTER_INIT();
         }
-        _gameManager.FILL_INPUT_DELIGATES();
-        _gameManager.SubscribeInput();
     }
 
     private void Awake()

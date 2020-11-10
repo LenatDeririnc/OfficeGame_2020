@@ -289,12 +289,7 @@ namespace ECM.Components
 
         protected virtual void Awake()
         {
-            BaseInputManager.Develop.UnlockCursorKey.performed += context => UnlockCursor();
-
-            BaseInputManager.PlayerMovement.ViewHorizontal.performed += context => HorizontalVelocity(context);
-            BaseInputManager.PlayerMovement.ViewHorizontal.canceled += context => HorizontalVelocity(context);
-            BaseInputManager.PlayerMovement.ViewVertical.performed += context => VerticalVelocity(context);
-            BaseInputManager.PlayerMovement.ViewVertical.canceled += context => VerticalVelocity(context);
+            
         }
 
         protected Quaternion ClampPitch(Quaternion q)

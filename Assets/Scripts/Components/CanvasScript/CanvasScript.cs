@@ -16,6 +16,7 @@ public class CanvasScript : MonoBehaviour, IInit
     public WinPanel winPanel;
     public InteractProgressBar interactProgressBar;
     public StressLevel stressLevel;
+    public PauseScript pauseScript;
 
     private List<IInit> INIT_ORDER;
 
@@ -32,6 +33,7 @@ public class CanvasScript : MonoBehaviour, IInit
         INIT_ORDER.Add(gameOverPanel);
         INIT_ORDER.Add(winPanel);
         INIT_ORDER.Add(interactProgressBar);
+        INIT_ORDER.Add(pauseScript);
     }
     
     public void INIT()

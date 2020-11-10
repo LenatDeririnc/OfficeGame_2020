@@ -44,4 +44,13 @@ public class BallsScripts : MonoBehaviour, IInit
         }
     }
 
+    public void ContinueTimers()
+    {
+        var currentBalls = GameManager.current.interactContainer.SelectedItems;
+        foreach (var ball in currentBalls)
+        {
+            ball.StartTimer();
+        }
+    }
+
 }

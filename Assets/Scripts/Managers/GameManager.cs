@@ -1,8 +1,11 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using ECM.Components;
+using ECM.Controllers;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour, IInit
@@ -15,10 +18,21 @@ public class GameManager : MonoBehaviour, IInit
     public Commands commands;
     [HideInInspector] public PlayerInterface playerInterface;
     [HideInInspector] public MouseLook mouseLook;
+    [HideInInspector] public BaseCharacterController baseCharacterController;
+    [HideInInspector] public BaseFirstPersonController baseFirstPersonController;
 
     [SerializeField] private GameObject player;
 
     private List<IInit> INIT_ORDER;
+
+    private static Action<InputAction.CallbackContext> ViewHorizontal;
+    private static Action<InputAction.CallbackContext> ViewVertical;
+    private static Action<InputAction.CallbackContext> Horizontal;
+    private static Action<InputAction.CallbackContext> Vertical;
+    private static Action<InputAction.CallbackContext> Run;
+    private static Action<InputAction.CallbackContext> Pause;
+    private static Action<InputAction.CallbackContext> StopMoving;
+    private static Action<InputAction.CallbackContext> Interact;
 
     private void FILL_INIT_ORDER()
     {
@@ -27,19 +41,80 @@ public class GameManager : MonoBehaviour, IInit
         INIT_ORDER.Add(commands);
         INIT_ORDER.Add(playerInterface);
     }
+
+    public void FILL_INPUT_DELIGATES()
+    {
+        ViewHorizontal = context => mouseLook.HorizontalVelocity(context);
+        ViewVertical = context => mouseLook.VerticalVelocity(context);
+        Horizontal = context => baseCharacterController.MoveHorizontal(context);
+        Vertical = context => baseCharacterController.MoveVertical(context);
+        Run = context => baseFirstPersonController.Run(context);
+        Pause = context => CanvasScript.current.pauseScript.Raise();
+        StopMoving = context => baseCharacterController.SetPause(context); 
+        Interact = context => playerInterface.Interact();
+    }
+
+    public void SubscribeInput()
+    {
+        Debug.Log("Sub!");
+        BaseInputManager.PlayerMovement.ViewHorizontal.performed += ViewHorizontal;
+        BaseInputManager.PlayerMovement.ViewHorizontal.canceled += ViewHorizontal;
+        BaseInputManager.PlayerMovement.ViewVertical.performed += ViewVertical;
+        BaseInputManager.PlayerMovement.ViewVertical.canceled += ViewVertical;
+        
+        BaseInputManager.PlayerMovement.Horizontal.performed += Horizontal;
+        BaseInputManager.PlayerMovement.Horizontal.canceled += Horizontal;
+        BaseInputManager.PlayerMovement.Vertical.performed += Vertical;
+        BaseInputManager.PlayerMovement.Vertical.canceled += Vertical;
+        BaseInputManager.PlayerMovement.Run.started += Run;
+        BaseInputManager.PlayerMovement.Run.canceled += Run;
+        
+        BaseInputManager.Interface.Pause.performed += Pause;
+        BaseInputManager.Interface.Pause.performed += StopMoving;
+        BaseInputManager.Interface.Interact.performed += Interact;
+        BaseInputManager.Interface.Interact.canceled += Interact;
+    }
+
+    public void UnsubscribeInput()
+    {
+        Debug.Log("Unsub!");
+        BaseInputManager.PlayerMovement.ViewHorizontal.performed -= ViewHorizontal;
+        BaseInputManager.PlayerMovement.ViewHorizontal.canceled -= ViewHorizontal;
+        BaseInputManager.PlayerMovement.ViewVertical.performed -= ViewVertical;
+        BaseInputManager.PlayerMovement.ViewVertical.canceled -= ViewVertical;
+        
+        BaseInputManager.PlayerMovement.Horizontal.performed -= Horizontal;
+        BaseInputManager.PlayerMovement.Horizontal.canceled -= Horizontal;
+        BaseInputManager.PlayerMovement.Vertical.performed -= Vertical;
+        BaseInputManager.PlayerMovement.Vertical.canceled -= Vertical;
+        BaseInputManager.PlayerMovement.Run.started -= Run;
+        BaseInputManager.PlayerMovement.Run.canceled -= Run;
+        
+        BaseInputManager.Interface.Pause.performed -= Pause;
+        BaseInputManager.Interface.Pause.performed -= StopMoving;
+        BaseInputManager.Interface.Interact.performed -= Interact;
+        BaseInputManager.Interface.Interact.canceled -= Interact;
+    }
     
     public void INIT()
     {
         current = this;
-        playerInterface = player.GetComponent<PlayerInterface>();
-        mouseLook = player.GetComponent<MouseLook>();
+        if (player != null)
+        {
+            playerInterface = player.GetComponent<PlayerInterface>();
+            mouseLook = player.GetComponent<MouseLook>();
+            baseCharacterController = player.GetComponent<BaseCharacterController>();
+            baseFirstPersonController = player.GetComponent<BaseFirstPersonController>();
+        }
+
         BaseInputManager.Init();
         
         FILL_INIT_ORDER();
 
         foreach (var initElement in INIT_ORDER)
         {
-            initElement.INIT();
+            if (initElement != null)
+                initElement.INIT();
         }
     }
 
@@ -47,7 +122,8 @@ public class GameManager : MonoBehaviour, IInit
     {
         foreach (var initElement in INIT_ORDER)
         {
-            initElement.GET();
+            if (initElement != null)
+                initElement.GET();
         }
     }
 
@@ -55,24 +131,27 @@ public class GameManager : MonoBehaviour, IInit
     {
         foreach (var initElement in INIT_ORDER)
         {
-            initElement.AFTER_INIT();
+            if (initElement != null)
+                initElement.AFTER_INIT();
         }
     }
 
     public void RestartLevel()
     {
-        SceneManager.UnloadSceneAsync("Office Logic");
-        SceneManager.LoadSceneAsync("Office Logic", LoadSceneMode.Additive);
+        UnsubscribeInput();
+        SceneManager.UnloadSceneAsync("Office Logic 1");
+        SceneManager.LoadSceneAsync("Office Logic 1", LoadSceneMode.Additive);
     }
 
     public void LoadLevel()
     {
         SceneManager.LoadScene(1, LoadSceneMode.Single);
-        SceneManager.LoadSceneAsync("Office Logic", LoadSceneMode.Additive);
+        SceneManager.LoadSceneAsync("Office Logic 1", LoadSceneMode.Additive);
     }
 
     public void GotoMainMenu()
     {
+        UnsubscribeInput();
         SceneManager.LoadScene(0, LoadSceneMode.Single);
     }
 

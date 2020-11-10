@@ -214,19 +214,17 @@ namespace ECM.Controllers
 
         protected override void HandleInputAwake()
         {
-            BaseInputManager.Interface.Pause.performed += context => SetPause(context);
-            BaseInputManager.PlayerMovement.Jump.performed += context => SetJump(context);
-            BaseInputManager.PlayerMovement.Horizontal.performed += context => MoveHorizontal(context);
-            BaseInputManager.PlayerMovement.Horizontal.canceled += context => MoveHorizontal(context);
-            BaseInputManager.PlayerMovement.Vertical.performed += context => MoveVertical(context);
-            BaseInputManager.PlayerMovement.Vertical.canceled += context => MoveVertical(context);
-            BaseInputManager.PlayerMovement.Run.started += context => Run(context);
-            BaseInputManager.PlayerMovement.Run.canceled += context => Run(context);
-            BaseInputManager.PlayerMovement.Jump.started += context => Jump(context);
-            BaseInputManager.PlayerMovement.Jump.canceled += context => Jump(context);
+            // BaseInputManager.Interface.Pause.performed += context => SetPause(context);
+            // BaseInputManager.PlayerMovement.Jump.performed += context => SetJump(context);
+            // BaseInputManager.PlayerMovement.Horizontal.performed += context => MoveHorizontal(context);
+            // BaseInputManager.PlayerMovement.Horizontal.canceled += context => MoveHorizontal(context);
+            // BaseInputManager.PlayerMovement.Vertical.performed += context => MoveVertical(context);
+            // BaseInputManager.PlayerMovement.Vertical.canceled += context => MoveVertical(context);
+            // BaseInputManager.PlayerMovement.Jump.started += context => Jump(context);
+            // BaseInputManager.PlayerMovement.Jump.canceled += context => Jump(context);
         }
 
-        protected void Run(InputAction.CallbackContext context)
+        public void Run(InputAction.CallbackContext context)
         {
             run = context.ReadValueAsButton();
         }

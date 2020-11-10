@@ -835,12 +835,12 @@ namespace ECM.Controllers
         }
 
 
-        protected virtual void SetJump(InputAction.CallbackContext context)
+        public virtual void SetJump(InputAction.CallbackContext context)
         {
             jump = context.ReadValueAsButton();
         }
 
-        protected virtual void SetPause(InputAction.CallbackContext context)
+        public virtual void SetPause(InputAction.CallbackContext context)
         {
             pause = !pause;
         }
@@ -856,27 +856,20 @@ namespace ECM.Controllers
 
         protected virtual void HandleInputAwake()
         {
-            BaseInputManager.Interface.Pause.performed += context => SetPause(context);
-            BaseInputManager.PlayerMovement.Jump.performed += context => SetJump(context);
-            BaseInputManager.PlayerMovement.Horizontal.performed += context => MoveHorizontal(context);
-            BaseInputManager.PlayerMovement.Horizontal.canceled += context => MoveHorizontal(context);
-            BaseInputManager.PlayerMovement.Vertical.performed += context => MoveVertical(context);
-            BaseInputManager.PlayerMovement.Vertical.canceled += context => MoveVertical(context);
-            BaseInputManager.PlayerMovement.Jump.started += context => Jump(context);
-            BaseInputManager.PlayerMovement.Jump.canceled += context => Jump(context);
+            
         }
 
-        protected void Jump(InputAction.CallbackContext context)
+        public void Jump(InputAction.CallbackContext context)
         {
             jump = context.ReadValueAsButton();
         }
 
-        protected virtual void MoveHorizontal(InputAction.CallbackContext context)
+        public virtual void MoveHorizontal(InputAction.CallbackContext context)
         {
             Horizontal = context.ReadValue<float>();
         }
 
-        protected virtual void MoveVertical(InputAction.CallbackContext context)
+        public virtual void MoveVertical(InputAction.CallbackContext context)
         {
             Vertical = context.ReadValue<float>();
         }

@@ -218,6 +218,11 @@ public class InteractableItem : Item, IInit
         StopCoroutine(DegreseHealth);
     }
 
+    public void StartTimer()
+    {
+        StartCoroutine(DegreseHealth);
+    }
+
     public void ShowObject()
     {
         m_gameObject.SetActive(true);

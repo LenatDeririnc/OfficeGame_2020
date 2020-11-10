@@ -35,7 +35,6 @@ public class InteractProgressBar : MonoBehaviour, IInit
     public void AFTER_INIT()
     {
         FillProgress = 0;
-        BaseInputManager.Interface.Interact.canceled += c => StopProgress();
     }
 
     private IEnumerator _fillProgressEnumerator()
