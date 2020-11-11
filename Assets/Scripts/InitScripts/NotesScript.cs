@@ -8,6 +8,7 @@ public class NotesScript : MonoBehaviour, IInit
     public static NotesScript current;
     private NoteItem[] notes;
     public List<NoteItem> foundNotes;
+    public GameObject[] groups;
 
     public void AddFoundNote(NoteItem note)
     {
@@ -41,6 +42,12 @@ public class NotesScript : MonoBehaviour, IInit
         foreach (var note in notes)
         {
             note.AFTER_INIT();
+        }
+        int randGroup = Random.Range(0, 3);
+        for (int i = 0; i < groups.Length; i++)
+        {
+            if (i != randGroup)
+                groups[i].SetActive(false);
         }
     }
 }
