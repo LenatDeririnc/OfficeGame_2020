@@ -34,6 +34,7 @@ public class NoteItem : Item, IInit
     
     public override void Interact()
     {
+        CanvasScript.current.noteCounterScript.Count += 1;
         NotesScript.current.AddFoundNote(this);
         _gachaPanel.commandName = objectAccess.command;
         _commandsPanel.UpdateCodesCount();
