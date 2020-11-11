@@ -20,6 +20,8 @@ public class CanvasScript : MonoBehaviour, IInit
     public GraphicalStationsPanel graphicalStationsPanel;
     public NoteCounterScript noteCounterScript;
     public HelpMenuScript helpMenuScript;
+    public BashScript bashScript;
+    public GameObject minimapCamera;
 
     private List<IInit> INIT_ORDER;
 
@@ -40,6 +42,7 @@ public class CanvasScript : MonoBehaviour, IInit
         INIT_ORDER.Add(pauseScript);
         INIT_ORDER.Add(noteCounterScript);
         INIT_ORDER.Add(helpMenuScript);
+        INIT_ORDER.Add(bashScript);
     }
     
     public void INIT()

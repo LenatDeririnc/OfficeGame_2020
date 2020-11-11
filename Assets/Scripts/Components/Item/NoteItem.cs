@@ -37,7 +37,7 @@ public class NoteItem : Item, IInit
         CanvasScript.current.noteCounterScript.Count += 1;
         NotesScript.current.AddFoundNote(this);
         _gachaPanel.commandName = objectAccess.command;
-        _commandsPanel.UpdateCodesCount();
+        _commandsPanel.UpdateCodesCount(command);
         objectAccess.setAwableForTerminal();
         gameObject.SetActive(false);
     }

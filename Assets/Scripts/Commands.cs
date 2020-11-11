@@ -10,7 +10,7 @@ public class Commands : MonoBehaviour, IInit
     private InteractableItem[] items;
     
     public static Commands current;
-    private Dictionary<string, InteractableItem> CommandLibary;
+    public Dictionary<string, InteractableItem> CommandLibary;
     public InputPanelScript inputPanel;
 
     public void INIT()
@@ -51,22 +51,23 @@ public class Commands : MonoBehaviour, IInit
         if (CommandLibary.ContainsKey(newArgs))
         {
             InteractableItem current = CommandLibary[newArgs];
-            Debug.Log(args);
             if (!current.isAvable) return;
             
             bool isActiveForTerminal = current.isAwableForTerminal;
             string command = current.command;
             string logMessage = current.logMessage;
             Action action = current.InteractWithCommand();
-
             if (!isActiveForTerminal) return;
+
             if (action != null) action();
             if (logMessage != null) ShowMessage(logMessage);
+            CanvasScript.current.commandsPanel.MoveCommandToBashScript(newArgs);
         }
     }
     
     public void CheckCommand(string args)
     {
+        Debug.Log("Check Command");
         string newArgs = args.ToLower();
 
         if (newArgs.Split(' ')[0] == "bash")

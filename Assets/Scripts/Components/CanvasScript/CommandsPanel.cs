@@ -7,25 +7,25 @@ using UnityEngine;
 public class CommandsPanel : MonoBehaviour, IInit
 {
     #region init
-
+    
     private GameObject _gameObject;
     private TMP_Text text;
-    private int itemsCount;
+    private List<string> not_used_commands;
 
     public void INIT()
     {
+        not_used_commands = new List<string>();
         _gameObject = gameObject;
         text = GetComponentInChildren<TMP_Text>();
     }
 
     public void GET()
     {
-        // throw new NotImplementedException();
+        
     }
 
     public void AFTER_INIT()
     {
-        itemsCount = 0;
         SetActive(false);
     }
 
@@ -33,15 +33,25 @@ public class CommandsPanel : MonoBehaviour, IInit
 
     #region logic
 
-    public void UpdateCodesCount()
+    public void MoveCommandToBashScript(string note)
+    {
+        Debug.Log("moved to bash");
+        if (!not_used_commands.Contains(note)) return;
+        CanvasScript.current.bashScript.AppendCommand(note);
+        not_used_commands.Remove(note);
+        
+    }
+
+    public void UpdateCodesCount(string newNote)
     {
         List<NoteItem> notes = NotesScript.current.foundNotes;
-        itemsCount = notes.Count;
+        not_used_commands.Add(newNote);
+        Debug.Log("not_used_commands add");
         string returnString = "";
         returnString = "Команды:\n---------\n";
-        foreach (var note in notes)
+        foreach (var note in not_used_commands)
         {
-            returnString += note.command + "\n";
+            returnString += note + "\n";
         }
 
         text.text = returnString;
