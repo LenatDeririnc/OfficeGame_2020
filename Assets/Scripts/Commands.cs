@@ -45,12 +45,13 @@ public class Commands : MonoBehaviour, IInit
         }
     }
 
-    public void CheckCommand(string args)
+    public void CheckCommandInLibary(string args)
     {
         string newArgs = args.ToLower();
         if (CommandLibary.ContainsKey(newArgs))
         {
             InteractableItem current = CommandLibary[newArgs];
+            Debug.Log(args);
             if (!current.isAvable) return;
             
             bool isActiveForTerminal = current.isAwableForTerminal;
@@ -58,11 +59,27 @@ public class Commands : MonoBehaviour, IInit
             string logMessage = current.logMessage;
             Action action = current.InteractWithCommand();
 
-            Debug.Log("ping");
-            
             if (!isActiveForTerminal) return;
             if (action != null) action();
             if (logMessage != null) ShowMessage(logMessage);
+        }
+    }
+    
+    public void CheckCommand(string args)
+    {
+        string newArgs = args.ToLower();
+
+        if (newArgs.Split(' ')[0] == "bash")
+        {
+            var foundNotes = NotesScript.current.foundNotes;
+            foreach (var note in foundNotes)
+            {
+                CheckCommandInLibary(note.command);
+            }
+        }
+        else
+        {
+            CheckCommandInLibary(newArgs);
         }
     }
 

@@ -33,13 +33,18 @@ public class CommandsPanel : MonoBehaviour, IInit
 
     #region logic
 
-    public void addCommand(string str)
+    public void UpdateCodesCount()
     {
-        string returnString = text.text;
-        if (itemsCount == 0) returnString += "Команды:\n---------\n";
-        returnString += str + "\n";
+        List<NoteItem> notes = NotesScript.current.foundNotes;
+        itemsCount = notes.Count;
+        string returnString = "";
+        returnString = "Команды:\n---------\n";
+        foreach (var note in notes)
+        {
+            returnString += note.command + "\n";
+        }
+
         text.text = returnString;
-        itemsCount++;
     }
 
     public void SetActive(bool state)

@@ -7,11 +7,21 @@ public class NotesScript : MonoBehaviour, IInit
 
     public static NotesScript current;
     private NoteItem[] notes;
+    public List<NoteItem> foundNotes;
+
+    public void AddFoundNote(NoteItem note)
+    {
+        if (!foundNotes.Contains(note))
+        {
+            foundNotes.Add(note);
+        }
+    }
     
     public void INIT()
     {
         current = this;
         notes = GetComponentsInChildren<NoteItem>();
+        foundNotes = new List<NoteItem>();
         foreach (var note in notes)
         {
             note.INIT();

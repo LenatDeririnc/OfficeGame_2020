@@ -5092,7 +5092,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4380838887592420, guid: c9a589dc94f925a4c8b6763a02a7acb6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.1830001
+      value: -3.18
       objectReference: {fileID: 0}
     - target: {fileID: 4380838887592420, guid: c9a589dc94f925a4c8b6763a02a7acb6, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5151,6 +5151,16 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: a47537c7aa1d6a24581df659f2c03a4b, type: 2}
+    - target: {fileID: 137936651767277582, guid: c9a589dc94f925a4c8b6763a02a7acb6,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 137936651767277582, guid: c9a589dc94f925a4c8b6763a02a7acb6,
+        type: 3}
+      propertyPath: m_LightProbeUsage
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c9a589dc94f925a4c8b6763a02a7acb6, type: 3}
 --- !u!114 &2050028225 stripped
@@ -8113,17 +8123,17 @@ PrefabInstance:
     - target: {fileID: 2739997598281406204, guid: 178f6c37a91e17047a40cfbd541880d4,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.9069347
+      value: 2.906
       objectReference: {fileID: 0}
     - target: {fileID: 2739997598281406204, guid: 178f6c37a91e17047a40cfbd541880d4,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.6270545
+      value: -1.613
       objectReference: {fileID: 0}
     - target: {fileID: 2739997598281406204, guid: 178f6c37a91e17047a40cfbd541880d4,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -6.9369736
+      value: -6.936
       objectReference: {fileID: 0}
     - target: {fileID: 2739997598281406204, guid: 178f6c37a91e17047a40cfbd541880d4,
         type: 3}
@@ -8622,6 +8632,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f0e5589f04788b4a8b03bef54eefe0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  foundNotes: []
 --- !u!1001 &972138507031081905
 PrefabInstance:
   m_ObjectHideFlags: 0

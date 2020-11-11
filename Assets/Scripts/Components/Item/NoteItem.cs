@@ -8,6 +8,7 @@ public class NoteItem : Item, IInit
     private string m_interactName;
     [SerializeField] private string m_id = "";
     [SerializeField] private InteractableItem objectAccess;
+    [HideInInspector] public string command; 
 
     public override string ID() => m_id;
     public override string InteractName() => m_interactName;
@@ -28,13 +29,14 @@ public class NoteItem : Item, IInit
 
     public void AFTER_INIT()
     {
-        
+        command = objectAccess.command;
     }
     
     public override void Interact()
     {
+        NotesScript.current.AddFoundNote(this);
         _gachaPanel.commandName = objectAccess.command;
-        _commandsPanel.addCommand(objectAccess.command);
+        _commandsPanel.UpdateCodesCount();
         objectAccess.setAwableForTerminal();
         gameObject.SetActive(false);
     }
