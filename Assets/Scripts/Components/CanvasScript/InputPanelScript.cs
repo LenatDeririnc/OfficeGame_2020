@@ -58,6 +58,8 @@ public class InputPanelScript : MonoBehaviour, IInit
         SetActive(true);
         inputField.ActivateInputField();
         CanvasScript.current.commandsPanel.SetActive(true);
+        CanvasScript.current.bashScript.SetActive(true);
+        CanvasScript.current.minimapCamera.SetActive(false);
     }
 
     public void SwitchFromCommandMode()
@@ -69,6 +71,8 @@ public class InputPanelScript : MonoBehaviour, IInit
         SetActive(false);
         clearTypeLine();
         CanvasScript.current.commandsPanel.SetActive(false);
+        CanvasScript.current.bashScript.SetActive(false);
+        CanvasScript.current.minimapCamera.SetActive(true);
     }
 
     public void clearTypeLine()
