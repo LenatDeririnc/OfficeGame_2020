@@ -4343,13 +4343,13 @@ MonoBehaviour:
     m_NumAlphaKeys: 2
   startValue: 0.6
   greenZonesValue: 0
-  yellowZonesValue: -0.03
-  redZonesValue: -0.05
-  blackZonesValue: -0.05
-  greenZoneRepairValue: 0.05
-  yellowZoneRepairValue: 0.16
-  redZoneRepairValue: 0.12
-  blackZoneRepairValue: 0.2
+  yellowZonesValue: -0.02
+  redZonesValue: -0.025
+  blackZonesValue: 0.02
+  greenZoneRepairValue: 0.08
+  yellowZoneRepairValue: 0.12
+  redZoneRepairValue: 0.2
+  blackZoneRepairValue: 0.3
   terminalRepairValue: 0.3
   _changeSpeed: 1
 --- !u!114 &1118704328
