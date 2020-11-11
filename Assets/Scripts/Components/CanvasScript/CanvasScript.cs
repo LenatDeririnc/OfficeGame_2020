@@ -19,6 +19,7 @@ public class CanvasScript : MonoBehaviour, IInit
     public PauseScript pauseScript;
     public GraphicalStationsPanel graphicalStationsPanel;
     public NoteCounterScript noteCounterScript;
+    public HelpMenuScript helpMenuScript;
 
     private List<IInit> INIT_ORDER;
 
@@ -38,6 +39,7 @@ public class CanvasScript : MonoBehaviour, IInit
         INIT_ORDER.Add(interactProgressBar);
         INIT_ORDER.Add(pauseScript);
         INIT_ORDER.Add(noteCounterScript);
+        INIT_ORDER.Add(helpMenuScript);
     }
     
     public void INIT()

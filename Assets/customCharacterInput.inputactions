@@ -388,6 +388,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "HelpMenu",
+                    "type": "Button",
+                    "id": "a9703f17-b6d9-4148-8657-58e17f5431e6",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -421,6 +429,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cac8b232-689a-4527-a604-cbedac71a9f3",
+                    "path": "<Keyboard>/f1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "HelpMenu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

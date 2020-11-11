@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour, IInit
     private static Action<InputAction.CallbackContext> Vertical;
     private static Action<InputAction.CallbackContext> Run;
     private static Action<InputAction.CallbackContext> Pause;
+    private static Action<InputAction.CallbackContext> HelpMenu;
     private static Action<InputAction.CallbackContext> StopMoving;
     private static Action<InputAction.CallbackContext> Interact;
     private static Action<InputAction.CallbackContext> StopInteract;
@@ -56,6 +57,7 @@ public class GameManager : MonoBehaviour, IInit
         Interact = context => playerInterface.Interact();
         StopInteract = context => CanvasScript.current.interactProgressBar.StopProgress();
         ExitFromConsole = context => CanvasScript.current.inputPanel.SwitchFromCommandMode();
+        HelpMenu = context => CanvasScript.current.helpMenuScript.Raise();
     }
 
     public void SubscribeInput()
@@ -64,14 +66,15 @@ public class GameManager : MonoBehaviour, IInit
         BaseInputManager.PlayerMovement.ViewHorizontal.canceled += ViewHorizontal;
         BaseInputManager.PlayerMovement.ViewVertical.performed += ViewVertical;
         BaseInputManager.PlayerMovement.ViewVertical.canceled += ViewVertical;
-        
+
         BaseInputManager.PlayerMovement.Horizontal.performed += Horizontal;
         BaseInputManager.PlayerMovement.Horizontal.canceled += Horizontal;
         BaseInputManager.PlayerMovement.Vertical.performed += Vertical;
         BaseInputManager.PlayerMovement.Vertical.canceled += Vertical;
         BaseInputManager.PlayerMovement.Run.started += Run;
         BaseInputManager.PlayerMovement.Run.canceled += Run;
-        
+
+        BaseInputManager.Interface.HelpMenu.performed += HelpMenu;
         BaseInputManager.Interface.Pause.performed += Pause;
         BaseInputManager.Interface.Pause.performed += StopMoving;
         BaseInputManager.Interface.Interact.performed += Interact;
@@ -93,6 +96,7 @@ public class GameManager : MonoBehaviour, IInit
         BaseInputManager.PlayerMovement.Run.started -= Run;
         BaseInputManager.PlayerMovement.Run.canceled -= Run;
         
+        BaseInputManager.Interface.HelpMenu.performed -= HelpMenu;
         BaseInputManager.Interface.Pause.performed -= Pause;
         BaseInputManager.Interface.Pause.performed -= StopMoving;
         BaseInputManager.Interface.Interact.performed -= Interact;

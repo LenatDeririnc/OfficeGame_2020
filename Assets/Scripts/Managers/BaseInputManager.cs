@@ -22,7 +22,7 @@ public static class BaseInputManager
         Interface = customCharacterInput.Interface;
         Develop = customCharacterInput.Develop;
         Note = customCharacterInput.Note;
-        
+
 
         PlayerMovement.Enable();
         Interface.Enable();
