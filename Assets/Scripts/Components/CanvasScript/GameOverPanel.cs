@@ -28,7 +28,7 @@ public class GameOverPanel : MonoBehaviour, IInit
     {
         BaseInputManager.customCharacterInput.Disable();
         BallsScripts.current.StopTimers();
-        _mouseLook.UnlockCursor();
+        _mouseLook.SetCursorLock(!true);
         _gameObject.SetActive(true);
     }
 }

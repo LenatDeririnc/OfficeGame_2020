@@ -35,7 +35,7 @@ public class InteractContainer : MonoBehaviour, IInit
         SelectItems();
         StartCoroutine(AppendItemCountCorutine);
     }
-
+    
     private InteractableItem OtherItems_Pop()
     {
         InteractableItem temp = otherItems[0];
@@ -80,28 +80,38 @@ public class InteractContainer : MonoBehaviour, IInit
         }
     }
 
+    private bool isTerminated = false;
     public void SetPause(bool state)
     {
         if (state)
         {
             StopCoroutine(AppendItemCountCorutine);
+            isTerminated = true;
         }
         else
         {
             StartCoroutine(AppendItemCountCorutine);
+            isTerminated = false;
         }
     }
 
     private IEnumerator AppendItemCountCorutine;
     IEnumerator AppendItemCount()
     {
-        yield return new WaitForSeconds(appendItemIntervalSeconds);
-        if (selectedItems.Count < maxActiveElements)
+        while (true)
         {
-            var newItem = OtherItems_Pop();
-            selectedItems.Add(newItem);
-            newItem.isAvable = true;
-            // CanvasScript.current.stationsPanel.updateItems();
+            Debug.Log("ping");
+            yield return new WaitForSeconds(appendItemIntervalSeconds);
+            if (!isTerminated)
+            {
+                if (selectedItems.Count < maxActiveElements)
+                {
+                    var newItem = OtherItems_Pop();
+                    selectedItems.Add(newItem);
+                    newItem.isAvable = true;
+                    // CanvasScript.current.stationsPanel.updateItems();
+                }   
+            }
         }
     }
 

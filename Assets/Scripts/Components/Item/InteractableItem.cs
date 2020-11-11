@@ -103,7 +103,7 @@ public class InteractableItem : Item, IInit
 
     public float maxHealth => m_maxHealth;
 
-    public override string InteractName() => "Использовать";
+    public override string InteractName() => "(Зажать) Починить";
 
     public Action InteractWithCommand() => CommandInteract;
 

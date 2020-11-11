@@ -45,7 +45,7 @@ public class BashScript : MonoBehaviour, IInit
         {
             returnString += "\t" + item + "\n";
         }
-        returnString += botom_header;
+        returnString += "\t" + botom_header;
         text.text = returnString;
     }
 

@@ -160,9 +160,23 @@ public class StressLevel : MonoBehaviour, IInit
         _interactContainer = GameManager.current.interactContainer;
     }
 
+    private IEnumerator updateCorutine;
     public void AFTER_INIT()
     {
-        StartCoroutine(UpdateCorutine());
+        updateCorutine = UpdateCorutine();
+        StartCoroutine(updateCorutine);
+    }
+
+    public void SetPause(bool state)
+    {
+        if (!state)
+        {
+            StartCoroutine(updateCorutine);
+        }
+        else
+        {
+            StopCoroutine(updateCorutine);
+        }
     }
 
     private float CalculateHeight(float percent)

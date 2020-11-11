@@ -28,8 +28,9 @@ public class PauseScript : MonoBehaviour, IInit
             }
             
             CanvasScript.current.gameOverTimer.SetPause(status);
+            CanvasScript.current.stressLevel.SetPause(status);
             GameManager.current.interactContainer.SetPause(status);
-            
+
             _gameObject.SetActive(status);
             _mouseLook.SetCursorLock(!status);
         }
